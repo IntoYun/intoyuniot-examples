@@ -1,0 +1,22 @@
+{
+    "name": "AnalogInOutSerial",
+    "description": "将采集到的模拟量值(AD值)通过虚拟串口输出",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

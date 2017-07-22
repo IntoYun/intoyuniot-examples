@@ -1,0 +1,22 @@
+{
+    "name": "Fading",
+    "description": "使用analogWrite()函数使LED呈渐明渐暗变化",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

@@ -1,0 +1,22 @@
+{
+    "name": "PhysicalPixel",
+    "description": "通过虚拟串口接收到的字符控制D7，收到“H”时D7输出高，收到“L”时D7输出低",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

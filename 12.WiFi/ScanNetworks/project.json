@@ -1,0 +1,22 @@
+{
+    "name": "ScanNetworks",
+    "description": "打印已经连接的无线网络的MAC地址，并扫描可用的WiFi网络但不加入网络",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

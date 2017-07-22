@@ -1,0 +1,22 @@
+{
+    "name": "eeprom_read",
+    "description": "Flash当做EEPROM使用进行读操作",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

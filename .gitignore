@@ -1,0 +1,14 @@
+# 平台相关隐藏文件
+.settings/*
+.cproject
+.project
+.DS_Store
+
+.intoiotenvs
+.intoiotlibdeps
+
+# gtags相关文件
+GPATH
+GRTAGS
+GTAGS
+
