@@ -1,13 +1,13 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
 
-  Knock Sensor
+ Knock Sensor
 
  This sketch reads a piezo element to detect a knocking sound.
  It reads an analog pin and compares the result to a set threshold.
@@ -18,7 +18,7 @@
  * + connection of the piezo attached to analog in 0
  * - connection of the piezo attached to ground
  * 1-megohm resistor attached from analog in 0 to ground
-*/
+ */
 
 
 // these constants won't change:
@@ -31,27 +31,27 @@ const int threshold = 100;  // threshold value to decide when the detected sound
 int sensorReading = 0;      // variable to store the value read from the sensor pin
 int ledState = LOW;         // variable used to store the last LED status, to toggle the light
 
-void setup() 
+void setup()
 {
-  pinMode(ledPin, OUTPUT); // declare the ledPin as as OUTPUT
-  pinMode(knockSensor,AN_INPUT);
-  Serial.begin(115200);       // use the serial port
+    pinMode(ledPin, OUTPUT); // declare the ledPin as as OUTPUT
+    pinMode(knockSensor,AN_INPUT);
+    Serial.begin(115200);       // use the serial port
 }
 
-void loop() 
+void loop()
 {
-  // read the sensor and store it in the variable sensorReading:
-  sensorReading = analogRead(knockSensor);
+    // read the sensor and store it in the variable sensorReading:
+    sensorReading = analogRead(knockSensor);
 
-  // if the sensor reading is greater than the threshold:
-  if (sensorReading >= threshold) 
-  {
-    // toggle the status of the ledPin:
-    ledState = !ledState;
-    // update the LED pin itself:
-    digitalWrite(ledPin, ledState);
-    // send the string "Knock!" back to the computer, followed by newline
-    Serial.println("Knock!");
-  }
-  delay(100);  // delay to avoid overloading the serial port buffer
+    // if the sensor reading is greater than the threshold:
+    if (sensorReading >= threshold)
+    {
+        // toggle the status of the ledPin:
+        ledState = !ledState;
+        // update the LED pin itself:
+        digitalWrite(ledPin, ledState);
+        // send the string "Knock!" back to the computer, followed by newline
+        Serial.println("Knock!");
+    }
+    delay(100);  // delay to avoid overloading the serial port buffer
 }

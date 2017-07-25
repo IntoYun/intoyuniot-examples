@@ -8,7 +8,7 @@
  This example is modified from arduino example
 
  Debounce
- 
+
  Each time the input pin goes from LOW to HIGH (e.g. because of a push-button
  press), the output pin is toggled from LOW to HIGH or HIGH to LOW.  There's
  a minimum delay between toggles to debounce the circuit (i.e. to ignore
@@ -38,7 +38,7 @@ int lastButtonState = LOW;   // the previous reading from the input pin
 long lastDebounceTime = 0;  // the last time the output pin was toggled
 long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
-void setup() 
+void setup()
 {
     pinMode(buttonPin, INPUT);
     pinMode(ledPin, OUTPUT);
@@ -47,7 +47,7 @@ void setup()
     digitalWrite(ledPin, ledState);
 }
 
-void loop() 
+void loop()
 {
     // read the state of the switch into a local variable:
     int reading = digitalRead(buttonPin);
@@ -57,24 +57,24 @@ void loop()
     // long enough since the last press to ignore any noise:
 
     // If the switch changed, due to noise or pressing:
-    if (reading != lastButtonState) 
+    if (reading != lastButtonState)
     {
         // reset the debouncing timer
         lastDebounceTime = millis();
     }
 
-    if ((millis() - lastDebounceTime) > debounceDelay) 
+    if ((millis() - lastDebounceTime) > debounceDelay)
     {
         // whatever the reading is at, it's been there for longer
         // than the debounce delay, so take it as the actual current state:
 
         // if the button state has changed:
-        if (reading != buttonState) 
+        if (reading != buttonState)
         {
             buttonState = reading;
 
             // only toggle the LED if the new button state is HIGH
-            if (buttonState == HIGH) 
+            if (buttonState == HIGH)
             {
                 ledState = !ledState;
             }

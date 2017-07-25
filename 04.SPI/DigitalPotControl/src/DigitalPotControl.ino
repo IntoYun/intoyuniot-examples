@@ -1,13 +1,13 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
- 
-   Digital Pot Control
+
+ Digital Pot Control
 
  This example controls an Analog Devices AD5206 digital potentiometer.
  The AD5206 has 6 potentiometer channels. Each channel's pins are labeled
@@ -20,33 +20,33 @@
  channel (0 - 255).
 
  The circuit:
-  * All A pins  of AD5206 connected to +5V
-  * All B pins of AD5206 connected to ground
-  * An LED and a 220-ohm resisor in series connected from each W pin to ground
-  * CS - to digital pin 34  (SS pin)
-  * SDI - to digital pin 37 (MOSI pin)
-  * CLK - to digital pin 35 (SCK pin)
+ * All A pins  of AD5206 connected to +5V
+ * All B pins of AD5206 connected to ground
+ * An LED and a 220-ohm resisor in series connected from each W pin to ground
+ * CS - to digital pin 34  (SS pin)
+ * SDI - to digital pin 37 (MOSI pin)
+ * CLK - to digital pin 35 (SCK pin)
 
-*/
+ */
 
 
 // set pin 10 as the slave select for the digital pot:
 //不同板子修改引脚
 const int slaveSelectPin = A4;
 
-void digitalPotWrite(int address, int value) 
+void digitalPotWrite(int address, int value)
 {
-  // take the SS pin low to select the chip:
-  digitalWrite(slaveSelectPin, LOW);
-  //  send in the address and value via SPI:
-  SPI.transfer(address);
-  SPI.transfer(value);
-  // take the SS pin high to de-select the chip:
-  digitalWrite(slaveSelectPin, HIGH);
+    // take the SS pin low to select the chip:
+    digitalWrite(slaveSelectPin, LOW);
+    //  send in the address and value via SPI:
+    SPI.transfer(address);
+    SPI.transfer(value);
+    // take the SS pin high to de-select the chip:
+    digitalWrite(slaveSelectPin, HIGH);
 }
 
 
-void setup() 
+void setup()
 {
     // set the slaveSelectPin as an output:
     pinMode (slaveSelectPin, OUTPUT);
@@ -54,13 +54,13 @@ void setup()
     SPI.begin();
 }
 
-void loop() 
+void loop()
 {
     // go through the six channels of the digital pot:
-    for (int channel = 0; channel < 6; channel++) 
+    for (int channel = 0; channel < 6; channel++)
     {
         // change the resistance on this channel from min to max:
-        for (int level = 0; level < 255; level++) 
+        for (int level = 0; level < 255; level++)
         {
             digitalPotWrite(channel, level);
             delay(10);
@@ -68,7 +68,7 @@ void loop()
         // wait a second at the top:
         delay(100);
         // change the resistance on this channel from max to min:
-        for (int level = 0; level < 255; level++) 
+        for (int level = 0; level < 255; level++)
         {
             digitalPotWrite(channel, 255 - level);
             delay(10);

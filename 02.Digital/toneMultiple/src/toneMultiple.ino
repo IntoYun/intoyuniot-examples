@@ -1,29 +1,29 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
-  This application example code is in the public domain.
-  This example is modified from arduino example
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
+ This application example code is in the public domain.
+ This example is modified from arduino example
 
-  Multiple tone player
+ Multiple tone player
 
  Plays multiple tones on multiple pins in sequence
 
- circuit:
+circuit:
  * 3 8-ohm speaker on digital pins D6, D7, and D8
 
-*/
+ */
 //不同板子请修改引脚
-void setup() 
+void setup()
 {
-	pinMode(D0,OUTPUT);
-	pinMode(D1,OUTPUT);
-	pinMode(D2,OUTPUT);
+    pinMode(D0,OUTPUT);
+    pinMode(D1,OUTPUT);
+    pinMode(D2,OUTPUT);
 }
 
-void loop() 
+void loop()
 {
     // turn off tone function for digital pin 8:
     noTone(D2);

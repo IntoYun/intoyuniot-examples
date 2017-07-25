@@ -6,7 +6,7 @@
 ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
- 
+
  Analog Input
  Demonstrates analog input by reading an analog sensor on analog pin 0 and
  turning on and off a light emitting diode(LED)  connected to digital pin 7.
@@ -31,13 +31,13 @@ int sensorPin = A0;    // select the input pin for the potentiometer
 int ledPin = D7;      // select the pin for the LED
 int sensorValue = 0;  // variable to store the value coming from the sensor
 
-void setup() 
+void setup()
 {
   // declare the ledPin as an OUTPUT:
   pinMode(ledPin, OUTPUT);
 }
 
-void loop() 
+void loop()
 {
   // read the value from the sensor:
   sensorValue = analogRead(sensorPin);

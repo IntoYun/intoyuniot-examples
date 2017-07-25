@@ -1,9 +1,9 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
 
@@ -17,7 +17,7 @@
  * LED attached from pin 13 to ground.
  * Note: on most Arduinos, there is already an LED on the board
  that's attached to pin 13, so no hardware is needed for this example.
-*/
+ */
 
 // constants won't change. Used here to set a pin number :
 //不同板子请修改引脚
@@ -33,7 +33,7 @@ unsigned long previousMillis = 0;        // will store last time LED was updated
 // constants won't change :
 const long interval = 1000;           // interval at which to blink (milliseconds)
 
-void setup() 
+void setup()
 {
     // set the digital pin as output:
     pinMode(ledPin, OUTPUT);
@@ -48,11 +48,11 @@ void loop()
     // the LED is bigger than the interval at which you want to
     // blink the LED.
     unsigned long currentMillis = millis();
- 
-    if(currentMillis - previousMillis >= interval) 
+
+    if(currentMillis - previousMillis >= interval)
     {
-        // save the last time you blinked the LED 
-        previousMillis = currentMillis;   
+        // save the last time you blinked the LED
+        previousMillis = currentMillis;
 
         // if the LED is off turn it on and vice-versa:
         if (ledState == LOW)

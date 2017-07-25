@@ -1,23 +1,23 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
-  This application example code is in the public domain.
-  This example is modified from arduino example
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
+ This application example code is in the public domain.
+ This example is modified from arduino example
 
-  Serial Call and Response
+ Serial Call and Response
 
  This program sends an ASCII A (byte of value 65) on startup
  and repeats that until it gets some data in.
  Then it waits for a byte in the serial port, and
  sends three sensor values whenever it gets a byte in.
 
-   The circuit:
+ The circuit:
  * potentiometers attached to analog inputs 0 and 1
  * pushbutton attached to digital I/O 2
-*/
+ */
 
 int firstSensor = 0;    // first analog sensor
 int secondSensor = 0;   // second analog sensor
@@ -25,13 +25,13 @@ int thirdSensor = 0;    // digital sensor
 int inByte = 0;         // incoming serial byte
 
 
-void establishContact() 
+void establishContact()
 {
-  while (Serial.available() <= 0) 
-  {
-    Serial.print('A');   // send a capital A
-    delay(300);
-  }
+    while (Serial.available() <= 0)
+    {
+        Serial.print('A');   // send a capital A
+        delay(300);
+    }
 }
 
 
@@ -39,7 +39,7 @@ void setup()
 {
     // start serial port at 115200 bps:
     Serial.begin(115200);
-    while (!Serial) 
+    while (!Serial)
     {
         ; // wait for serial port to connect. Needed for Leonardo only
     }
@@ -47,13 +47,13 @@ void setup()
     pinMode(D7, INPUT);   // digital sensor is on digital pin 2
     establishContact();  // send a byte to establish contact until receiver responds
     pinMode(A0,AN_INPUT);
-	pinMode(A1,AN_INPUT);
+    pinMode(A1,AN_INPUT);
 }
 
 void loop()
 {
     // if we get a valid byte, read analog ins:
-    if (Serial.available() > 0) 
+    if (Serial.available() > 0)
     {
         // get incoming byte:
         inByte = Serial.read();

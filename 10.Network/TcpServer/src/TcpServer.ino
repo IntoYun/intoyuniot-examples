@@ -1,5 +1,3 @@
-
-
 TCPServer server = TCPServer(5555);
 TCPClient client,client_bak;
 
@@ -7,9 +5,9 @@ char c;
 
 void setup()
 {
-  // start listening for clients
-  server.begin();
-  Serial.begin(115200);
+    // start listening for clients
+    server.begin();
+    Serial.begin(115200);
 }
 void loop()
 {

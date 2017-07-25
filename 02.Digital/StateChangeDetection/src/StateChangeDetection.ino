@@ -33,7 +33,7 @@ int buttonPushCounter = 0;   // counter for the number of button presses
 int buttonState = 0;         // current state of the button
 int lastButtonState = 0;     // previous state of the button
 
-void setup() 
+void setup()
 {
     // initialize the button pin as a input:
     pinMode(buttonPin, INPUT);
@@ -44,16 +44,16 @@ void setup()
 }
 
 
-void loop() 
+void loop()
 {
     // read the pushbutton input pin:
     buttonState = digitalRead(buttonPin);
 
     // compare the buttonState to its previous state
-    if (buttonState != lastButtonState) 
+    if (buttonState != lastButtonState)
     {
         // if the state has changed, increment the counter
-        if (buttonState == HIGH) 
+        if (buttonState == HIGH)
         {
             // if the current state is HIGH then the button
             // wend from off to on:
@@ -62,7 +62,7 @@ void loop()
             Serial.print("number of button pushes:  ");
             Serial.println(buttonPushCounter);
         }
-        else 
+        else
         {
             // if the current state is LOW then the button
             // wend from on to off:
@@ -78,11 +78,11 @@ void loop()
     // checking the modulo of the button push counter.
     // the modulo function gives you the remainder of
     // the division of two numbers:
-    if (buttonPushCounter % 4 == 0) 
+    if (buttonPushCounter % 4 == 0)
     {
         digitalWrite(ledPin, HIGH);
-    } 
-    else 
+    }
+    else
     {
         digitalWrite(ledPin, LOW);
     }

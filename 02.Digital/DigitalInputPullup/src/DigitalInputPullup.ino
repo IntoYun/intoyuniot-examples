@@ -21,7 +21,7 @@
  read HIGH when the switch is open, and LOW when it is closed.
 */
 
-void setup() 
+void setup()
 {
     //start serial connection
     Serial.begin(115200);
@@ -30,7 +30,7 @@ void setup()
     pinMode(D7, OUTPUT);
 }
 
-void loop() 
+void loop()
 {
     //read the pushbutton value into a variable
     int sensorVal = digitalRead(D2);
@@ -41,11 +41,11 @@ void loop()
     // logic is inverted. It goes HIGH when it's open,
     // and LOW when it's pressed. Turn on pin 13 when the
     // button's pressed, and off when it's not:
-    if (sensorVal == HIGH) 
+    if (sensorVal == HIGH)
     {
         digitalWrite(D7, LOW);
     }
-    else 
+    else
     {
         digitalWrite(D7, HIGH);
     }

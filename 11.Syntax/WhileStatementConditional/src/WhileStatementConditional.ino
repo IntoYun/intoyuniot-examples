@@ -1,13 +1,13 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
-  This application example code is in the public domain.
-  This example is modified from arduino example
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
+ This application example code is in the public domain.
+ This example is modified from arduino example
 
-  Conditionals - while statement
+ Conditionals - while statement
 
  This example demonstrates the use of  while() statements.
 
@@ -23,7 +23,7 @@
  * LED connected from digital pin 9 to ground through 220 ohm resistor
  * pushbutton attached from pin 2 to +5V
  * 10K resistor attached from pin 2 to ground
-*/
+ */
 
 
 // These constants won't change:
@@ -40,7 +40,7 @@ int sensorValue = 0;         // the sensor value
 
 
 
-void setup() 
+void setup()
 {
     // set the LED pins as outputs and the switch pin as input:
     pinMode(indicatorLedPin, OUTPUT);
@@ -49,10 +49,10 @@ void setup()
     pinMode(sensorPin,AN_INPUT);
 }
 
-void loop() 
+void loop()
 {
     // while the button is pressed, take calibration readings:
-    while (digitalRead(buttonPin) == HIGH) 
+    while (digitalRead(buttonPin) == HIGH)
     {
         calibrate();
     }
@@ -72,24 +72,24 @@ void loop()
     analogWrite(ledPin, sensorValue);
 }
 
-void calibrate() 
+void calibrate()
 {
-  // turn on the indicator LED to indicate that calibration is happening:
-  digitalWrite(indicatorLedPin, HIGH);
-  // read the sensor:
-  sensorValue = analogRead(sensorPin);
+    // turn on the indicator LED to indicate that calibration is happening:
+    digitalWrite(indicatorLedPin, HIGH);
+    // read the sensor:
+    sensorValue = analogRead(sensorPin);
 
-  // record the maximum sensor value
-  if (sensorValue > sensorMax) 
-  {
-    sensorMax = sensorValue;
-  }
+    // record the maximum sensor value
+    if (sensorValue > sensorMax)
+    {
+        sensorMax = sensorValue;
+    }
 
-  // record the minimum sensor value
-  if (sensorValue < sensorMin) 
-  {
-    sensorMin = sensorValue;
-  }
+    // record the minimum sensor value
+    if (sensorValue < sensorMin)
+    {
+        sensorMin = sensorValue;
+    }
 }
 
 

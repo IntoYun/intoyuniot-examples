@@ -1,22 +1,22 @@
 /*
-************************************************************************
-* @author  :  IntoRobot  Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
+ ************************************************************************
+ * @author  :  IntoRobot  Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
 
-Smoothing
+ Smoothing
 
-Reads repeatedly from an analog input, calculating a running average
-and printing it to the computer.  Keeps ten readings in an array and
-continually averages them.
+ Reads repeatedly from an analog input, calculating a running average
+ and printing it to the computer.  Keeps ten readings in an array and
+ continually averages them.
 
-The circuit:
-* Analog sensor (potentiometer will do) attached to analog input 0
+ The circuit:
+ * Analog sensor (potentiometer will do) attached to analog input 0
 
-*/
+ */
 
 
 // Define the number of samples to keep track of.  The higher the number,
@@ -35,30 +35,30 @@ int inputPin = A0;
 void setup()
 {
     Serial.begin(115200);
-   pinMode(inputPin,AN_INPUT);
-  // initialize all the readings to 0:
-  for (int thisReading = 0; thisReading < numReadings; thisReading++)
-    readings[thisReading] = 0;
+    pinMode(inputPin,AN_INPUT);
+    // initialize all the readings to 0:
+    for (int thisReading = 0; thisReading < numReadings; thisReading++)
+        readings[thisReading] = 0;
 }
 
 void loop() {
-  // subtract the last reading:
-  total = total - readings[readIndex];
-  // read from the sensor:
-  readings[readIndex] = analogRead(inputPin);
-  // add the reading to the total:
-  total = total + readings[readIndex];
-  // advance to the next position in the array:
-  readIndex = readIndex + 1;
+    // subtract the last reading:
+    total = total - readings[readIndex];
+    // read from the sensor:
+    readings[readIndex] = analogRead(inputPin);
+    // add the reading to the total:
+    total = total + readings[readIndex];
+    // advance to the next position in the array:
+    readIndex = readIndex + 1;
 
-  // if we're at the end of the array...
-  if (readIndex >= numReadings)
-    // ...wrap around to the beginning:
-    readIndex = 0;
+    // if we're at the end of the array...
+    if (readIndex >= numReadings)
+        // ...wrap around to the beginning:
+        readIndex = 0;
 
-  // calculate the average:
-  average = total / numReadings;
-  // send it to the computer as ASCII digits
-  Serial.println(average);
-  delay(1);        // delay in between reads for stability
+    // calculate the average:
+    average = total / numReadings;
+    // send it to the computer as ASCII digits
+    Serial.println(average);
+    delay(1);        // delay in between reads for stability
 }

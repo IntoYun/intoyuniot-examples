@@ -6,7 +6,7 @@
 ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
- 
+
    Analog input, analog output, serial monitor output
 
  Reads an analog input pin, maps the result to a range from 0 to 255
@@ -29,7 +29,7 @@ const int analogOutPin = D0; // Analog output pin that the LED is attached to
 int sensorValue = 0;        // value read from the pot
 int outputValue = 0;        // value output to the PWM (analog out)
 
-void setup() 
+void setup()
 {
   // initialize serial communications at 115200 bps:
   Serial.begin(115200);
@@ -37,7 +37,7 @@ void setup()
   pinMode(analogOutPin,OUTPUT);
 }
 
-void loop() 
+void loop()
 {
   // read the analog in value:
   sensorValue = analogRead(analogInPin);

@@ -1,10 +1,10 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
-  Graph
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
+ Graph
 
  A simple example of communication from the IntoRobot board to the computer:
  the value of analog input 0 is sent out the serial port.  We call this "serial"
@@ -24,14 +24,14 @@
  This example code is in the public domain.
  */
 
-void setup() 
+void setup()
 {
     // initialize the serial communication:
     Serial.begin(115200);
     pinMode(A0,AN_INPUT);
 }
 
-void loop() 
+void loop()
 {
     // send the value of analog input 0:
     Serial.println(analogRead(A0));

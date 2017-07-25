@@ -27,7 +27,7 @@ void setup()
     pinMode(D0,OUTPUT);
 }
 
-void loop() 
+void loop()
 {
     // read the sensor:
     int sensorReading = analogRead(A0);

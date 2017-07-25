@@ -1,13 +1,13 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
  This application example code is in the public domain.
  This example is modified from arduino example
 
-  Dimmer
+ Dimmer
 
  Demonstrates the sending data from the computer to the IntoRobot board,
  in this case to control the brightness of an LED.  The data is sent
@@ -17,7 +17,7 @@
  The circuit:
  LED attached from digital pin D7 to ground.
  Serial connection to Processing, Max/MSP, or another serial application
-*/
+ */
 
 const int ledPin = D7;  // the pin that the LED is attached to
 
@@ -29,12 +29,12 @@ void setup()
     pinMode(ledPin, OUTPUT);
 }
 
-void loop() 
+void loop()
 {
     byte brightness;
 
     // check if data has been sent from the computer:
-    if (Serial.available()) 
+    if (Serial.available())
     {
         // read the most recent byte (which will be from 0 to 255):
         brightness = Serial.read();

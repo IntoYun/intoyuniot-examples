@@ -1,13 +1,13 @@
 /*
-************************************************************************
-* @author  :  IntoRobot Team
-* @version :  V1.0.0
-* @date    :  03-30-15
-************************************************************************
-  This application example code is in the public domain.
-  This example is modified from arduino example
+ ************************************************************************
+ * @author  :  IntoRobot Team
+ * @version :  V1.0.0
+ * @date    :  03-30-15
+ ************************************************************************
+ This application example code is in the public domain.
+ This example is modified from arduino example
 
-  Conditionals - If statement
+ Conditionals - If statement
 
  This example demonstrates the use of if() statements.
  It reads the state of a potentiometer (an analog input) and turns on an LED
@@ -22,14 +22,14 @@
 
  * Note: On most Arduino boards, there is already an LED on the board
  connected to pin 13, so you don't need any extra components for this example.
-*/
+ */
 
 // These constants won't change:
 const int analogPin = A0;    // pin that the sensor is attached to
 const int ledPin = D7;       // pin that the LED is attached to
 const int threshold = 400;   // an arbitrary threshold level that's in the range of the analog input
 
-void setup() 
+void setup()
 {
     // initialize the LED pin as an output:
     pinMode(ledPin, OUTPUT);
@@ -38,17 +38,17 @@ void setup()
     pinMode(analogPin,AN_INPUT);
 }
 
-void loop() 
+void loop()
 {
     // read the value of the potentiometer:
     int analogValue = analogRead(analogPin);
 
     // if the analog value is high enough, turn on the LED:
-    if (analogValue > threshold) 
+    if (analogValue > threshold)
     {
         digitalWrite(ledPin, HIGH);
     }
-    else 
+    else
     {
         digitalWrite(ledPin, LOW);
     }
