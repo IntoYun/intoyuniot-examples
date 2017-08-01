@@ -9,7 +9,7 @@ SX1278_TX：SX1278发送数据
 
 */
 
-#define LED           D5
+#define LED    LED_USER
 
 static bool ledFlag = false;
 uint8_t buffer[4] = {1,2,3,4};//应用数据定义
@@ -23,27 +23,27 @@ void LoRaRadioEventCallback(system_event_t event, int param, uint8_t *data, uint
             switch(param)
             {
                 case ep_lora_radio_tx_done:
-                    LoRaWan.radioSetSleep();
+                    LoRa.radioSetSleep();
                     ledFlag = !ledFlag;
                     digitalWrite(LED,ledFlag);
                     Serial.println("tx done");
                     break;
 
                 case ep_lora_radio_tx_timeout:
-                    LoRaWan.radioSetSleep();
+                    LoRa.radioSetSleep();
                     Serial.println("tx timeout");
                     break;
 
                 case ep_lora_radio_rx_done:
-                    LoRaWan.radioSetSleep();
+                    LoRa.radioSetSleep();
                     break;
 
                 case ep_lora_radio_rx_timeout:
-                    LoRaWan.radioSetSleep();
+                    LoRa.radioSetSleep();
                     break;
 
                 case ep_lora_radio_rx_error:
-                    LoRaWan.radioSetSleep();
+                    LoRa.radioSetSleep();
                     break;
 
                 case ep_lora_radio_cad_done:
@@ -64,19 +64,11 @@ void LoRaRadioEventCallback(system_event_t event, int param, uint8_t *data, uint
 
 }
 
-void init_before_setup(void)
-{
-    System.disableFeature(SYSTEM_FEATURE_LORAMAC_ENABLED);
-}
-
-STARTUP( init_before_setup() );
-
 void setup()
 {
+    LoRaWan.macPause();//停止运行lorawan协议
     Serial.begin(115200);
-    LoRaWan.loramacPause();//停止运行lorawan协议
     System.on(event_lora_radio_status, &LoRaRadioEventCallback);
-    LoRaWan.radioSetFreq(434000000);
     pinMode(LED,OUTPUT);
 }
 
@@ -91,6 +83,6 @@ void loop()
     {
         buffer[0] = 0;
     }
-    LoRaWan.radioSend(buffer,4);
+    LoRa.radioSend(buffer,4);
     delay(1000);
 }
