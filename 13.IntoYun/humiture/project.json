@@ -16,12 +16,12 @@
             "email": "robin@molmc.com"
         }
     ],
-    "dependencies":
-    {
-        "name": "IntoRobot_DHT",
-        "frameworks": "arduino"
-    },
-
+    "dependencies":[
+        {
+            "name": "IntoRobot_DHT",
+            "frameworks": "arduino"
+        }
+    ],
     "frameworks": "arduino",
     "platforms": "*"
 }

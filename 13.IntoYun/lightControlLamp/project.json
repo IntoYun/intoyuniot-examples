@@ -16,11 +16,12 @@
             "email": "robin@molmc.com"
         }
     ],
-    "dependencies":
-    {
-        "name": "GY30",
-        "frameworks": "arduino"
-    },
+    "dependencies":[
+        {
+            "name": "GY30",
+            "frameworks": "arduino"
+        }
+    ],
     "frameworks": "arduino",
     "platforms": "*"
 }
