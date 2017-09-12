@@ -1,0 +1,22 @@
+{
+    "name": "p2p_rx_block",
+    "description": "p2p_rx_block：p2p透传接收数据阻塞方式运行",
+    "homepage": "https://github.com/IntoYun",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/IntoYun"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

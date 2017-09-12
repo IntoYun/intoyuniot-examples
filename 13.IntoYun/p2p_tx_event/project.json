@@ -1,0 +1,22 @@
+{
+    "name": "p2p_tx_event",
+    "description": "p2p_tx_event：p2p透传发送数据事件方式运行",
+    "homepage": "https://github.com/IntoYun",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/IntoYun"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

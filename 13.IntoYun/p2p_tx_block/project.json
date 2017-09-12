@@ -1,11 +1,11 @@
 {
-    "name": "sx1278_RX",
-    "description": "sx1278_RX：SX1278接收数据",
-    "homepage": "https://github.com/intorobot",
+    "name": "p2p_tx_block",
+    "description": "p2p_tx_block：p2p透传发送数据阻塞方式运行",
+    "homepage": "https://github.com/IntoYun",
     "repository":
     {
         "type": "git",
-        "url": "https://github.com/intorobot"
+        "url": "https://github.com/IntoYun"
     },
     "version": "1.0.0",
     "authors": [

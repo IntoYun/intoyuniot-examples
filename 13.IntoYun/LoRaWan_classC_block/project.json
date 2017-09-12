@@ -1,0 +1,22 @@
+{
+    "name": "LoRaWan_classC_block",
+    "description": "LoRaWan_classC_block：Class C 阻塞方式运行，入网或者发送数据的状态结果由调用函接数返回",
+    "homepage": "https://github.com/IntoYun",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/IntoYun"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+
