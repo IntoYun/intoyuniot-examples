@@ -35,7 +35,7 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
     if((event == event_cloud_data)){
         if(param == ep_cloud_data_datapoint){
             // 颜色模式
-            if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_ENUM_LIGHT_MODE, LightMode)){
+            if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_ENUM_LIGHT_MODE, LightMode)){
                 Serial.printf("Read Light Mode: ");
                 switch(LightMode)
                 {
@@ -55,28 +55,28 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
                 Serial.printf("\r\n");
             }
             //灯泡控制
-            if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_SWITCH, LightSwitch)){
+            if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_BOOL_SWITCH, LightSwitch)){
                 Serial.printf("switch: %d\r\n", LightSwitch);
                 if(true == LightSwitch)
                 {
                     digitalWrite(LEDPIN, LOW);     // 打开灯泡
-                    IntoRobot.writeDatapoint(DPID_BOOL_LIGHT_STATUS, true);
+                    Cloud.writeDatapoint(DPID_BOOL_LIGHT_STATUS, true);
                 }
                 else
                 {
                     digitalWrite(LEDPIN, HIGH);    // 关闭灯泡
-                    IntoRobot.writeDatapoint(DPID_BOOL_LIGHT_STATUS, false);
+                    Cloud.writeDatapoint(DPID_BOOL_LIGHT_STATUS, false);
                 }
             }
 
             //速度控制
-            if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_NUMBER_RHEOSTAT, Rheostat_tmp)){
+            if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_NUMBER_RHEOSTAT, Rheostat_tmp)){
                 Rheostat = Rheostat_tmp;
                 Serial.printf("Speed: %d\r\n", Rheostat);
             }
 
             //字符串显示
-            if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_STRING_LCD_DISPLAY, LcdDisplay)){
+            if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_STRING_LCD_DISPLAY, LcdDisplay)){
                 Serial.printf("Lcd Display: %s\r\n", LcdDisplay.c_str());
             }
         }else if(param == ep_cloud_data_custom){
@@ -118,13 +118,13 @@ void setup()
 {
     Serial.begin(115200);
     pinMode(LEDPIN, OUTPUT);
-    IntoRobot.defineDatapointEnum(DPID_ENUM_LIGHT_MODE, DP_PERMISSION_UP_DOWN, 0);                          //颜色模式
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, -100, 100, 2, 0);       //温度
-    IntoRobot.defineDatapointBool(DPID_BOOL_SWITCH, DP_PERMISSION_UP_DOWN, false);                          //灯泡开关
-    IntoRobot.defineDatapointBool(DPID_BOOL_LIGHT_STATUS, DP_PERMISSION_UP_ONLY, false);                    //灯泡亮灭状态
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_RHEOSTAT, DP_PERMISSION_UP_DOWN, 0, 1000, 0, 0);            //速度
-    IntoRobot.defineDatapointString(DPID_STRING_LCD_DISPLAY, DP_PERMISSION_UP_DOWN, 255, "oh yeah!");       //字符显示
-    IntoRobot.defineDatapointBinary(DPID_BINARY_DATA, DP_PERMISSION_UP_DOWN, 255, "\x23\x32\x32\x43", 4);   //字符显示
+    Cloud.defineDatapointEnum(DPID_ENUM_LIGHT_MODE, DP_PERMISSION_UP_DOWN, 0);                          //颜色模式
+    Cloud.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, -100, 100, 2, 0);       //温度
+    Cloud.defineDatapointBool(DPID_BOOL_SWITCH, DP_PERMISSION_UP_DOWN, false);                          //灯泡开关
+    Cloud.defineDatapointBool(DPID_BOOL_LIGHT_STATUS, DP_PERMISSION_UP_ONLY, false);                    //灯泡亮灭状态
+    Cloud.defineDatapointNumber(DPID_NUMBER_RHEOSTAT, DP_PERMISSION_UP_DOWN, 0, 1000, 0, 0);            //速度
+    Cloud.defineDatapointString(DPID_STRING_LCD_DISPLAY, DP_PERMISSION_UP_DOWN, 255, "oh yeah!");       //字符显示
+    Cloud.defineDatapointBinary(DPID_BINARY_DATA, DP_PERMISSION_UP_DOWN, 255, "\x23\x32\x32\x43", 4);   //字符显示
     System.on(event_lorawan_status, &lorawan_event_callback);
     System.on(event_cloud_data, &system_event_callback);
     //设置参数
@@ -145,7 +145,7 @@ void loop()
     switch(deviceState)
     {
         case DEVICE_STATE_JOIN:
-            if(IntoYun.connect(JOIN_OTAA,400) == 0){
+            if(Cloud.connect(JOIN_OTAA,400) == 0){
                 LoRaWan.setMacClassType(CLASS_C);//入网成功后设置为C类
                 deviceState = DEVICE_STATE_SEND;
             }
@@ -157,15 +157,15 @@ void loop()
             }else{
                 Temperature += 0.1;
             }
-            IntoRobot.writeDatapoint(DPID_NUMBER_TEMPERATURE, Temperature);
+            Cloud.writeDatapoint(DPID_NUMBER_TEMPERATURE, Temperature);
             //速度上送
             if(Rheostat >= 1000){
                 Rheostat = 0;
             }else{
                 Rheostat += 5;
             }
-            IntoRobot.writeDatapoint(DPID_NUMBER_RHEOSTAT, Rheostat);
-            if(IntoRobot.sendDatapointAll(false,120) == 0){
+            Cloud.writeDatapoint(DPID_NUMBER_RHEOSTAT, Rheostat);
+            if(Cloud.sendDatapointAll(false,120) == 0){
                 Serial.println("send ok");
                 deviceState = DEVICE_STATE_CYCLE;
             }else{

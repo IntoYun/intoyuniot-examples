@@ -63,7 +63,7 @@ void LoRaRadioEventCallback(system_event_t event, int param, uint8_t *data, uint
 
 void setup()
 {
-    IntoYun.setProtocol(PROTOCOL_P2P);//不运行lorawan协议
+    Cloud.setProtocol(PROTOCOL_P2P);//不运行lorawan协议
     Serial.begin(115200);
     System.on(event_lora_radio_status, &LoRaRadioEventCallback);
     LoRa.radioSetFreq(433175000);
