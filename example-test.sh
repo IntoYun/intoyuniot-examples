@@ -2,125 +2,131 @@
 # Author: chenkaiyao <chenkaiyao@molmc.com>
 
 if false;then
-intoyuniot run -d ./01.Basics/AnalogReadSerial
-intoyuniot run -d ./01.Basics/Blank
-intoyuniot run -d ./01.Basics/Blink
-intoyuniot run -d ./01.Basics/DigitalReadSerial
-intoyuniot run -d ./01.Basics/Fade
-intoyuniot run -d ./01.Basics/ReadAnalogVoltage
+intoyuniot run -d ./Basics/AnalogReadSerial
+intoyuniot run -d ./Basics/Blank
+intoyuniot run -d ./Basics/Blink
+intoyuniot run -d ./Basics/DigitalReadSerial
+intoyuniot run -d ./Basics/Fade
+intoyuniot run -d ./Basics/ReadAnalogVoltage
 fi
 
 if false;then
-intoyuniot run -d ./02.Digital/BlinkWithoutDelay/
-intoyuniot run -d ./02.Digital/Button/
-intoyuniot run -d ./02.Digital/Debounce/
-intoyuniot run -d ./02.Digital/DigitalInputPullup/
-intoyuniot run -d ./02.Digital/StateChangeDetection/
-intoyuniot run -d ./02.Digital/toneKeyboard/
-intoyuniot run -d ./02.Digital/toneMelody/
-intoyuniot run -d ./02.Digital/toneMultiple/
-intoyuniot run -d ./02.Digital/tonePitchFollower/
+intoyuniot run -d ./Digital/BlinkWithoutDelay/
+intoyuniot run -d ./Digital/Button/
+intoyuniot run -d ./Digital/Debounce/
+intoyuniot run -d ./Digital/DigitalInputPullup/
+intoyuniot run -d ./Digital/StateChangeDetection/
+intoyuniot run -d ./Digital/toneKeyboard/
+intoyuniot run -d ./Digital/toneMelody/
+intoyuniot run -d ./Digital/toneMultiple/
+intoyuniot run -d ./Digital/tonePitchFollower/
 fi
 
 if false;then
-intoyuniot run -d ./03.Analog/AnalogInOutSerial/
-intoyuniot run -d ./03.Analog/AnalogInput/
-intoyuniot run -d ./03.Analog/AnalogWrite/
-intoyuniot run -d ./03.Analog/Calibration/
-intoyuniot run -d ./03.Analog/Fading/
-intoyuniot run -d ./03.Analog/Smoothing/
+intoyuniot run -d ./Analog/AnalogInOutSerial/
+intoyuniot run -d ./Analog/AnalogInput/
+intoyuniot run -d ./Analog/AnalogWrite/
+intoyuniot run -d ./Analog/Calibration/
+intoyuniot run -d ./Analog/Fading/
+intoyuniot run -d ./Analog/Smoothing/
 fi
 
 if false;then
-intoyuniot run -d ./04.SPI/BarometricPressureSensor/
-intoyuniot run -d ./04.SPI/DigitalPotControl/
+intoyuniot run -d ./SPI/BarometricPressureSensor/
+intoyuniot run -d ./SPI/DigitalPotControl/
 fi
 
 if false;then
-intoyuniot run -d ./05.Servo/knob/
-intoyuniot run -d ./05.Servo/sweep/
+intoyuniot run -d ./Servo/knob/
+intoyuniot run -d ./Servo/sweep/
 fi
 
 if false;then
-intoyuniot run -d ./06.EEPROM/eeprom_read/
-intoyuniot run -d ./06.EEPROM/eeprom_write/
+intoyuniot run -d ./EEPROM/eeprom_read/
+intoyuniot run -d ./EEPROM/eeprom_write/
 fi
 
 if false;then
-intoyuniot run -d ./07.I2C/DigitalPotentiometer/
-intoyuniot run -d ./07.I2C/MasterRead/
-intoyuniot run -d ./07.I2C/MasterWrite/
-intoyuniot run -d ./07.I2C/SlaveReceiver/
-intoyuniot run -d ./07.I2C/SlaveSend/
-intoyuniot run -d ./07.I2C/SRFxx_Read/
+intoyuniot run -d ./I2C/DigitalPotentiometer/
+intoyuniot run -d ./I2C/MasterRead/
+intoyuniot run -d ./I2C/MasterWrite/
+intoyuniot run -d ./I2C/SlaveReceiver/
+intoyuniot run -d ./I2C/SlaveSend/
+intoyuniot run -d ./I2C/SRFxx_Read/
 fi
 
 if false;then
-intoyuniot run -d ./08.Accel/ADXL3xx/
-intoyuniot run -d ./08.Accel/Knock/
-intoyuniot run -d ./08.Accel/Memsic2125/
+intoyuniot run -d ./Accel/ADXL3xx/
+intoyuniot run -d ./Accel/Knock/
+intoyuniot run -d ./Accel/Memsic2125/
 fi
 
 if false;then
-intoyuniot run -d ./09.Serial/ASCIITable/
-intoyuniot run -d ./09.Serial/Dimmer/
-intoyuniot run -d ./09.Serial/Graph/
-intoyuniot run -d ./09.Serial/Midi/
-intoyuniot run -d ./09.Serial/MultiSerialMega/
-intoyuniot run -d ./09.Serial/PhysicalPixel/
-intoyuniot run -d ./09.Serial/ReadASCIIString/
-intoyuniot run -d ./09.Serial/SerialCallResponse/
-intoyuniot run -d ./09.Serial/SerialEvent/
-intoyuniot run -d ./09.Serial/VirtualColorMixer/
+intoyuniot run -d ./Serial/ASCIITable/
+intoyuniot run -d ./Serial/Dimmer/
+intoyuniot run -d ./Serial/Graph/
+intoyuniot run -d ./Serial/Midi/
+intoyuniot run -d ./Serial/MultiSerialMega/
+intoyuniot run -d ./Serial/PhysicalPixel/
+intoyuniot run -d ./Serial/ReadASCIIString/
+intoyuniot run -d ./Serial/SerialCallResponse/
+intoyuniot run -d ./Serial/SerialEvent/
+intoyuniot run -d ./Serial/VirtualColorMixer/
 fi
 
 if false;then
-intoyuniot run -d ./10.Network/TcpClient/
-intoyuniot run -d ./10.Network/TcpServer/
+intoyuniot run -d ./Network/TcpClient/
+intoyuniot run -d ./Network/TcpServer/
 fi
 
 if false;then
-intoyuniot run -d ./11.Syntax/Arrays/
-intoyuniot run -d ./11.Syntax/ForLoopIteration/
-intoyuniot run -d ./11.Syntax/IfStatementConditional/
-intoyuniot run -d ./11.Syntax/WhileStatementConditional/
-intoyuniot run -d ./11.Syntax/switchCase/
-intoyuniot run -d ./11.Syntax/switchCase2/
+intoyuniot run -d ./Syntax/Arrays/
+intoyuniot run -d ./Syntax/ForLoopIteration/
+intoyuniot run -d ./Syntax/IfStatementConditional/
+intoyuniot run -d ./Syntax/WhileStatementConditional/
+intoyuniot run -d ./Syntax/switchCase/
+intoyuniot run -d ./Syntax/switchCase2/
 fi
 
 if false;then
-intoyuniot run -d ./12.WiFi/ConnectNoEncryption/
-intoyuniot run -d ./12.WiFi/ConnectWithWEP/
-intoyuniot run -d ./12.WiFi/ConnectWithWPA/
-intoyuniot run -d ./12.WiFi/ScanNetworks/
+intoyuniot run -d ./WiFi/ConnectNoEncryption/
+intoyuniot run -d ./WiFi/ConnectWithWEP/
+intoyuniot run -d ./WiFi/ConnectWithWPA/
+intoyuniot run -d ./WiFi/ScanNetworks/
 fi
 
 if false;then
-intoyuniot run -d ./13.IntoYun/humiture/
-intoyuniot run -d ./13.IntoYun/lightControlLamp/
-intoyuniot run -d ./13.IntoYun/smartLight/
-intoyuniot run -d ./13.IntoYun/sx1278_RX/
-intoyuniot run -d ./13.IntoYun/sx1278_TX/
-intoyuniot run -d ./13.IntoYun/tempControlFan/
-intoyuniot run -d ./13.IntoYun/template/
+intoyuniot run -d ./IntoYun/humiture/
+intoyuniot run -d ./IntoYun/lightControlLamp/
+intoyuniot run -d ./IntoYun/smartLight/
+intoyuniot run -d ./IntoYun/LoRaWan_classA_block/
+intoyuniot run -d ./IntoYun/LoRaWan_classA_event/
+intoyuniot run -d ./IntoYun/LoRaWan_classC_block/
+intoyuniot run -d ./IntoYun/LoRaWan_classC_event/
+intoyuniot run -d ./IntoYun/p2p_rx_block/
+intoyuniot run -d ./IntoYun/p2p_rx_event/
+intoyuniot run -d ./IntoYun/p2p_tx_block/
+intoyuniot run -d ./IntoYun/p2p_tx_event/
+intoyuniot run -d ./IntoYun/tempControlFan/
+intoyuniot run -d ./IntoYun/template/
 fi
 
 if false;then
-intoyuniot run -d ./14.String/CharacterAnalysis/
-intoyuniot run -d ./14.String/StringAdditionOperator/
-intoyuniot run -d ./14.String/StringAppendOperator/
-intoyuniot run -d ./14.String/StringCaseChanges/
-intoyuniot run -d ./14.String/StringCharacters/
-intoyuniot run -d ./14.String/StringComparisonOperators/
-intoyuniot run -d ./14.String/StringConstructors/
-intoyuniot run -d ./14.String/StringIndexOf/
-intoyuniot run -d ./14.String/StringLength/
-intoyuniot run -d ./14.String/StringLengthTrim/
-intoyuniot run -d ./14.String/StringReplace/
-intoyuniot run -d ./14.String/StringStartsWithEndsWith/
-intoyuniot run -d ./14.String/StringSubstring/
-intoyuniot run -d ./14.String/StringToInt/
-intoyuniot run -d ./14.String/StringToIntRGB/
+intoyuniot run -d ./String/CharacterAnalysis/
+intoyuniot run -d ./String/StringAdditionOperator/
+intoyuniot run -d ./String/StringAppendOperator/
+intoyuniot run -d ./String/StringCaseChanges/
+intoyuniot run -d ./String/StringCharacters/
+intoyuniot run -d ./String/StringComparisonOperators/
+intoyuniot run -d ./String/StringConstructors/
+intoyuniot run -d ./String/StringIndexOf/
+intoyuniot run -d ./String/StringLength/
+intoyuniot run -d ./String/StringLengthTrim/
+intoyuniot run -d ./String/StringReplace/
+intoyuniot run -d ./String/StringStartsWithEndsWith/
+intoyuniot run -d ./String/StringSubstring/
+intoyuniot run -d ./String/StringToInt/
+intoyuniot run -d ./String/StringToIntRGB/
 fi
 
 
