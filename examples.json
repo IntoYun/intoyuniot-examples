@@ -1,19 +1,19 @@
 {
+    "Analog": "模拟IO操作",
     "Basics": "基础操作",
     "Digital": "数字IO操作",
-    "Analog": "模拟IO操作",
-    "SPI":"SPI接口",
-    "Servo":"舵机控制",
     "EEPROM":"EEPROM读写",
     "I2C":"I2C读写",
+    "LoRa":"LoRa编程",
+    "LoRaWan":"LoRaWan编程",
+    "Network":"网络接口",
+    "Projects":"项目实例",
     "Sensors":"惯性传感器",
     "Serial":"串口通讯",
-    "Network":"网络接口",
-    "Syntax":"语法控制",
-    "WiFi":"WiFi操作",
+    "Servo":"舵机控制",
+    "SPI":"SPI接口",
     "String":"字符串操作",
-    "Project":"项目实例",
-    "LoRaWan":"LoRaWan编程",
-    "LoRa":"LoRa编程"
+    "Syntax":"语法控制",
+    "WiFi":"WiFi操作"
 }
 
