@@ -17,41 +17,47 @@
  3.DATA                       D0
 
  说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
- */
+*/
 
 #include "IntoRobot_DHT.h"
 
-PRODUCT_ID(WP6KsBxqRPM9x1ab)                     //产品ID
-PRODUCT_SECRET(e964ba2d7ebdfbf368ba3168aafd55cb) //产品密钥
-PRODUCT_VERSION(1)                               //产品版本号
+PRODUCT_ID(vJpbyXAxReBJd1a7)                     //产品标识
+PRODUCT_SECRET(8d4eca4109e6d177c358b2d474845778) //产品密钥
+PRODUCT_SOFTWARE_VERSION(1.0.0)                  //产品软件版本号
+PRODUCT_HARDWARE_VERSION(1.0.0)                  //产品硬件版本号
 
 
-    //定义数据点
-#define DPID_NUMBER_TEMPERATURE             1    //温度
-#define DPID_NUMBER_HUMIDITY                2    //湿度
+#define DPID_NUMBER_TEMPERATURE                   1  //数值型            温度
+#define DPID_NUMBER_HUMIDITY                      2  //数值型            湿度
 
-#define DHT11_PIN   D0                      //传感器引脚定义
-#define DHT_TYPE    DHT11                   //传感器类型定义
+#define DHT11_PIN   D0                           //传感器引脚定义
+#define DHT_TYPE    DHT11                        //传感器类型定义
 
 
 IntoRobot_DHT dht11(DHT11_PIN,DHT_TYPE);
 
-float temperature;
-float humidity;
+double dpDoubleTemperature;                      // 温度
+int dpIntHumidity;                               // 湿度
+
+void userHandle (void) {
+    dpDoubleTemperature = dht11.getTempCelcius();
+    dpIntHumidity = dht11.getHumidity();
+    //发送数据点 （数据点具备上送属性）
+    IntoRobot.writeDatapoint(DPID_NUMBER_TEMPERATURE, dpDoubleTemperature);
+    IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, dpIntHumidity);
+    //处理间隔，用户可以根据自己需求更改
+    delay(3000);
+}
 
 void setup()
 {
     dht11.begin();
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, 0, 100, 1, 0); //定义温度数据点
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 0, 0);    //定义湿度数据点
+    IntoRobot.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, 0, 100, 1, 0); //温度
+    IntoRobot.defineDatapointNumber(DPID_NUMBER_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 0, 0);    //湿度
 }
 
 void loop()
 {
-    temperature = dht11.getTempCelcius();
-    humidity = dht11.getHumidity();
-
-    IntoRobot.writeDatapoint(DPID_NUMBER_TEMPERATURE, temperature);
-    IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, humidity);
-    delay(3000);
+    userHandle();
 }
+

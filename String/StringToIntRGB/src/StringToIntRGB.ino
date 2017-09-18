@@ -110,5 +110,5 @@ void loop()
         // reset the color counter:
         currentColor = 0;
     }
-
 }
+

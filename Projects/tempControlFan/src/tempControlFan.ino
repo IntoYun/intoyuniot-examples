@@ -103,3 +103,4 @@ void loop()
     IntoRobot.writeDatapoint(DPID_NUMBER_TEMPERATURE,temperature);
     delay(3000);
 }
+

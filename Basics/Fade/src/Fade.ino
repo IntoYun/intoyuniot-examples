@@ -1,11 +1,11 @@
 /*
-    Fade
+   Fade
 
-    该示例展示如何通过函数analogWrite()让LED实现调光效果.
+   该示例展示如何通过函数analogWrite()让LED实现调光效果.
 
-    analogWrite()用于产生PWM, 所以如果您要修改管脚，您需要确保管脚具备产生PWM功能.
-    如果你想或者哪些管脚具备PWM功能，请查看文档:http://docs.intorobot.com/hardware.
-*/
+   analogWrite()用于产生PWM, 所以如果您要修改管脚，您需要确保管脚具备产生PWM功能.
+   如果你想或者哪些管脚具备PWM功能，请查看文档:http://docs.intorobot.com/hardware.
+ */
 
 int led = D0;          // LED灯管脚
 int brightness = 0;    // LED灯亮度
