@@ -6,12 +6,14 @@
     "Servo":"舵机控制",
     "EEPROM":"EEPROM读写",
     "I2C":"I2C读写",
-    "Accel":"惯性传感器",
+    "Sensors":"惯性传感器",
     "Serial":"串口通讯",
     "Network":"网络接口",
     "Syntax":"语法控制",
     "WiFi":"WiFi操作",
-    "IntoYun":"IntoYun",
-    "String":"字符串操作"
+    "String":"字符串操作",
+    "Project":"项目实例",
+    "LoRaWan":"LoRaWan编程",
+    "LoRa":"LoRa编程"
 }
 
