@@ -1,0 +1,28 @@
+{
+    "name": "garden_LoRaWan",
+    "description": "garden_LoRaWan：监测土壤湿度，远程控制浇水，采用Class C方式",
+    "homepage": "https://github.com/IntoYun",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/IntoYun"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "dependencies":[
+        {
+            "name": "YL38",
+            "frameworks": "arduino"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+
