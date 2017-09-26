@@ -1,0 +1,52 @@
+{
+    "name": "selfBalancedCar",
+    "description": "自平衡小车：采用步进电机，自动避障功能，实时检测电池电量等",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "dependencies":[
+        {
+            "name": "IntoBike_Bluetooth_Control",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "Sonar_Sensor_Processing",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoBike_Balance_Control",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoBike_StepMotor_Control",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoBike_OledDisplay",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoBike_AccelGyro_Sensor_Processing",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoBike_IntoRobotCloud_Interface",
+            "frameworks": "arduino"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

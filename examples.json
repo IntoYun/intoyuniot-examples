@@ -4,6 +4,7 @@
     "Digital": "数字IO操作",
     "EEPROM":"EEPROM读写",
     "I2C":"I2C读写",
+    "IntoRobot":"项目实例",
     "LoRa":"LoRa编程",
     "LoRaWan":"LoRaWan编程",
     "Network":"网络接口",

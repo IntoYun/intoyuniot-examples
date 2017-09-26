@@ -1,0 +1,36 @@
+{
+    "name": "fishTank",
+    "description": "智能鱼缸：可检测水温、控制喂食、抽水、增氧、恒温等动作",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "dependencies":[
+        {
+            "name": "Dallas_Temperature",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "OneWire",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "Adafruit_NeoPixel",
+            "frameworks": "arduino"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

@@ -1,0 +1,36 @@
+{
+    "name": "flowerPot",
+    "description": "花园管家：检测花园环境温湿度、光照强度、土壤湿度，同时可以控制浇水",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "dependencies":[
+        {
+            "name": "GY30",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "YL38",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoRobot_DHT",
+            "frameworks": "arduino"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

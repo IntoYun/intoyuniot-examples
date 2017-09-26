@@ -1,0 +1,22 @@
+{
+    "name": "nutLightCtrlLamp",
+    "description": "Nut智能光控灯：Nut自带光照传感器，可以检测光照强度，根据光强度控制灯的开关",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

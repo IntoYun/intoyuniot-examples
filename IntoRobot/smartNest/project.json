@@ -1,0 +1,36 @@
+{
+    "name": "smartNest",
+    "description": "智能鸟窝：可以检测鸟窝中有没有鸟以及环境的温湿度和PM2.5值",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "dependencies":[
+        {
+            "name": "IntoRobot_DHT",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "GY30",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "GP2Y10",
+            "frameworks": "arduino"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

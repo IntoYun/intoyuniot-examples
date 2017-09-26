@@ -1,0 +1,22 @@
+{
+    "name": "smartWastebin",
+    "description": "智能垃圾桶：通过红外检测到有人体靠近需要丢垃圾，则通过舵机控制垃圾桶盖自动打开，丢完垃圾后垃圾桶盖自动关闭",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

@@ -1,0 +1,22 @@
+{
+    "name": "petFeed",
+    "description": "宠物喂食器：通过红外检测到宠物靠近喂食器的次数，次数到了就启动一定时间的电机来喂食",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+

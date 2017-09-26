@@ -1,0 +1,40 @@
+{
+    "name": "incubator_lcd12864",
+    "description": "孵化器：孵化器是孵化禽蛋的专门设备。该设备具备灯光控制、摇蛋、控制温湿度、通风等功能",
+    "homepage": "https://github.com/intorobot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intorobot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "dependencies":[
+        {
+            "name": "LCD12864RSPI",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "PID",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "IntoRobot_DHT",
+            "frameworks": "arduino"
+        },
+        {
+            "name": "Adafruit_NeoPixel",
+            "frameworks": "arduino"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+
