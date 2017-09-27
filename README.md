@@ -16,6 +16,6 @@
 141
 
 ## 注意
-Projects目录仅在intoyun平台显示
+Projects LoRaWan目录仅在intoyun平台显示
 IntoRobot目录仅在intorobot平台显示
 其余为公共部分

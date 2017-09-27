@@ -26,7 +26,7 @@
             "frameworks": "arduino"
         },
         {
-            "name": "IntoRobot_DHT",
+            "name": "Adafruit_DHT",
             "frameworks": "arduino"
         },
         {
