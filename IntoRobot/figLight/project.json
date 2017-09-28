@@ -1,6 +1,6 @@
 {
-    "name": "nutLight",
-    "description": "Nut光照强度计：Nut自带光传感器检测光照强度",
+    "name": "figLight",
+    "description": "Fig光照强度计：Fig自带光传感器检测光照强度",
     "homepage": "https://github.com/intorobot",
     "repository":
     {
