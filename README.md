@@ -13,7 +13,7 @@
 1. example-test.sh
 
 ## 示例总数
-141
+142
 
 ## 注意
 Projects LoRaWan目录仅在intoyun平台显示
