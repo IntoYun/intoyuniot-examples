@@ -27,10 +27,10 @@ PRODUCT_HARDWARE_VERSION(1.0.0)                  //产品硬件版本号
 //说明：布尔型: BOOL. 数值型: NUMBER. 枚举型: ENUM. 字符串型: STRING. 透传型: BINARY
 #define DPID_BOOL_SWITCH                      1  //布尔型     开关(可上送可下发)
 #define DPID_NUMBER_TEMPATURE                 2  //数值型     温度(只上送)
-#define DPID_NUMBER_HUMIDITY                  2  //数值型     湿度(只上送)
-#define DPID_ENUM_COLOR                       3  //枚举型     颜色模式(可上送可下发)
-#define DPID_STRING_DISPLAY                   4  //字符串型   显示字符串(可上送可下发)
-#define DPID_BINARY_LOCATION                  5  //透传型     位置(可上送可下发)
+#define DPID_NUMBER_HUMIDITY                  3  //数值型     湿度(只上送)
+#define DPID_ENUM_COLOR                       4  //枚举型     颜色模式(可上送可下发)
+#define DPID_STRING_DISPLAY                   5  //字符串型   显示字符串(可上送可下发)
+#define DPID_BINARY_LOCATION                  6  //透传型     位置(可上送可下发)
 
 
 //格式：数据类型+数据点英文名. 如果英文名相同的，则在后面添加_1 _2 _3形式。
@@ -80,22 +80,22 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
 void userHandle(void)
 {
     //连接网络
-    if(Cloud.connect() < 0) {
+    if(Cloud.connected() < 0) {
         if(Cloud.connect(JOIN_OTAA, 400) == 0) {
             LoRaWan.setMacClassType(CLASS_C);    //入网成功后设置为C类
         }
+    }else(Cloud.connected() == 0){
+        //更新数据点数据（数据点具备：上送属性）
+        IntoRobot.writeDatapoint(DPID_BOOL_SWITCH, dpBoolSwitch);
+        IntoRobot.writeDatapoint(DPID_NUMBER_TEMPATURE, dpDoubleTemperature);
+        IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, dpIntHumidity);
+        IntoRobot.writeDatapoint(DPID_ENUM_COLOR, dpEnumColor);
+        IntoRobot.writeDatapoint(DPID_STRING_DISPLAY, "hello! intoyun!");
+        IntoRobot.writeDatapoint(DPID_BINARY_LOCATION, "\x12\x34\x56\x78", 4);
+        //发送数据点数据，建议不频繁上送数据
+        Cloud.sendDatapointAll(false, 0);
+        delay(60000);
     }
-
-    //更新数据点数据（数据点具备：上送属性）
-    IntoRobot.writeDatapoint(DPID_BOOL_SWITCH, dpBoolSwitch);
-    IntoRobot.writeDatapoint(DPID_NUMBER_TEMPATURE, dpDoubleTemperature);
-    IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, dpIntHumidity);
-    IntoRobot.writeDatapoint(DPID_ENUM_COLOR, dpEnumColor);
-    IntoRobot.writeDatapoint(DPID_STRING_DISPLAY, "hello! intoyun!");
-    IntoRobot.writeDatapoint(DPID_BINARY_LOCATION, "\x12\x34\x56\x78", 4);
-    //发送数据点数据，建议不频繁上送数据
-    Cloud.sendDatapointAll(false, 0);
-    delay(60000);
 }
 
 void setup()
