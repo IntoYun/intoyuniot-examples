@@ -26,9 +26,9 @@ AO     A0
 switch----D2
 */
 
-#include "IntoYunIot_SHT2x.h"
-#include "gy30.h"
-#include "yl38.h"
+#include <IntoYunIot_SHT2x.h>
+#include <gy30.h>
+#include <yl38.h>
 
 PRODUCT_ID(BysPnpkCgHPhM1ec);                     // 产品标识
 PRODUCT_SECRET(745f24b07bce12ad6eb5aa6463fd2556); // 产品密钥
