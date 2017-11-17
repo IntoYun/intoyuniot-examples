@@ -5,149 +5,123 @@
 *  模板版本：v1.3
 
 引脚接法：
+SHT20(温湿度传感器)
+VDD    3.3V
+GND    GND
+SCL    D0
+SDA    D1
+
+GY30(光照传感器)
+VDD    3.3V
+GND    GND
+SCL    D0
+SDA    D1
 
 YL38(土壤湿度传感器)
-VCC----3.3V
-GND----GND
-AO-----A0
+VCC    3.3V
+GND    GND
+AO     A0
 
 浇水开关
-switch----D0
+switch----D2
 */
 
-#include <yl38.h>
+#include "IntoYunIot_SHT2x.h"
+#include "gy30.h"
+#include "yl38.h"
 
-PRODUCT_ID(qWcOC68fXe7qc1ab);                     // 产品标识
-PRODUCT_SECRET(d7e916d8a8a4dc4542723a73b492fe07); // 产品密钥
+PRODUCT_ID(BysPnpkCgHPhM1ec);                     // 产品标识
+PRODUCT_SECRET(745f24b07bce12ad6eb5aa6463fd2556); // 产品密钥
 PRODUCT_VERSION(1);                               // 产品版本
 
-#define DPID_NUMBER_HUMIDITY                      1  //数值型            土壤湿度
-#define DPID_BOOL_SWITCH                          2  //布尔型            浇水开关
+#define DPID_NUMBER_TEMPATURE                     1  //数值型            温度
+#define DPID_NUMBER_HUMIDITY                      2  //数值型            湿度
+#define DPID_NUMBER_ILLUMINATION                  3  //数值型            光照强度
+#define DPID_NUMBER_SOIL_HUMIDITY                 4  //数值型            土壤湿度
+#define DPID_BOOL_WATER_SWITCH                    5  //布尔型            浇水开关
 
-#define YL38_PIN        A0
-#define WATER_SWITCH    D7
+#define WATER_SWITCH_PIN    D2
+#define SOIL_SENSOR_PIN     A0
 
-static enum eDeviceState
-{
-    DEVICE_STATE_IDLE,
-    DEVICE_STATE_JOIN,
-    DEVICE_STATE_SEND,
-    DEVICE_STATE_CYCLE,
-}deviceState;
+double dpDoubleTempature = 0.00;                         // 温度
+double dpDoubleHumidity = 0.00;                          // 湿度
+double dpDoubleIllumination = 0.00;                      // 光照强度
+int dpIntSoil_humidity = 0;                           // 土壤湿度
+bool dpBoolWater_switch;                          // 浇水开关
 
-int dpIntHumidity;                                // 土壤湿度
-bool dpBoolSwitch;                                // 浇水开关
-
-YL38 yl38 = YL38(YL38_PIN);
+uint32_t timerID;
+GY30 gy30;
+IntoYunIot_SHT2x SHT2x;
+YL38 yl38 = YL38(SOIL_SENSOR_PIN);
 
 void system_event_callback(system_event_t event, int param, uint8_t *data, uint16_t datalen) {
-	if ((event == event_cloud_data) && (param == ep_cloud_data_datapoint)) {
-		//浇水开关
-		if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_SWITCH, dpBoolSwitch)) {
-			//用户代码
-            if(true == dpBoolSwitch)
-            {
-                digitalWrite(WATER_SWITCH,LOW);//打开开关
+    if ((event == event_cloud_data) && (param == ep_cloud_data_datapoint)) {
+        //浇水开关
+        if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_WATER_SWITCH, dpBoolWater_switch)) {
+            //用户代码
+            if(true == dpBoolWater_switch){
+                digitalWrite(WATER_SWITCH_PIN, HIGH);
+                dpBoolWater_switch = true;
+            }else{
+                digitalWrite(WATER_SWITCH_PIN, LOW);
+                dpBoolWater_switch = false;
             }
-            else
-            {
-                digitalWrite(WATER_SWITCH,HIGH);
-            }
-		}
-
-	}
-}
-
-void lorawan_event_callback(system_event_t event, int param, uint8_t *data, uint16_t datalen)
-{
-    switch(event)
-    {
-        case event_lorawan_status:
-            switch(param)
-            {
-                case ep_lorawan_join_success: //入网成功
-                    LoRaWan.setMacClassType(CLASS_C);//入网成功后设置为C类
-                    deviceState = DEVICE_STATE_SEND;
-                    Serial.println("lorawan event join success");
-                    break;
-
-                case ep_lorawan_join_fail: //入网失败
-                    deviceState = DEVICE_STATE_JOIN;
-                    Serial.println("lorawan event join fail");
-                    break;
-
-                case ep_lorawan_send_success:
-                    deviceState = DEVICE_STATE_CYCLE;
-                    Serial.println("lorawan event send success");
-                    break;
-
-                case ep_lorawan_send_fail:
-                    deviceState = DEVICE_STATE_CYCLE;
-                    Serial.println("lorawan event send fail");
-                    break;
-
-                default:
-                    break;
-            }
-            break;
-
-            default:
-                break;
+        }
     }
 }
 
 void userHandle (void) {
-    switch(deviceState)
+    if(Cloud.connected() < 0)  //未连接
     {
-        case DEVICE_STATE_JOIN:
-            Cloud.connect(JOIN_OTAA,0);
-            deviceState = DEVICE_STATE_IDLE;
-            break;
-
-        case DEVICE_STATE_SEND:
-	        //发送数据点 （数据点具备上送属性）
-	        dpIntHumidity = yl38.CalculateHumidity();
-	        IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, dpIntHumidity);
-            if(Cloud.sendDatapointAll(false,0) == -1){ //发送忙
-                deviceState = DEVICE_STATE_CYCLE;
-            }else{
-                deviceState = DEVICE_STATE_IDLE;
-            }
-            break;
-
-        case DEVICE_STATE_IDLE:
-            break;
-
-        case DEVICE_STATE_CYCLE:
-            delay(60000);
-            deviceState = DEVICE_STATE_SEND;
-            break;
-
-        default:
-            break;
+        if(Cloud.connect(JOIN_OTAA, 400) == 0){
+            LoRaWan.setMacClassType(CLASS_C);//入网成功后设置为C类
+        }
+    }else if (Cloud.connected() == 0){  //连接上
+        if(timerIsEnd(timerID, 15000))  //处理间隔  用户可自行更改
+        {
+            timerID = timerGetId();
+            //发送数据点 （数据点具备上送属性）
+            dpDoubleTempature = SHT2x.readT();
+            dpDoubleHumidity = SHT2x.readRH();
+            dpDoubleIllumination = gy30.Read();
+            dpIntSoil_humidity = yl38.CalculateHumidity();
+            IntoRobot.writeDatapoint(DPID_NUMBER_TEMPATURE, dpDoubleTempature);
+            IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, dpDoubleHumidity);
+            IntoRobot.writeDatapoint(DPID_NUMBER_ILLUMINATION, dpDoubleIllumination);
+            IntoRobot.writeDatapoint(DPID_NUMBER_SOIL_HUMIDITY, dpIntSoil_humidity);
+            Cloud.sendDatapointAll(false, 120);
+        }
     }
 }
 
-void setup () {
-    Serial.begin(115200);
-    yl38.begin();
-    pinMode(WATER_SWITCH,OUTPUT);
-    System.on(event_lorawan_status, &lorawan_event_callback);
-	System.on(event_cloud_data, system_event_callback);
-	IntoRobot.defineDatapointNumber(DPID_NUMBER_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 0, 0); //土壤湿度
-	IntoRobot.defineDatapointBool(DPID_BOOL_SWITCH, DP_PERMISSION_DOWN_ONLY, false); //浇水开关
-    //设置参数
+void userInit(void) {
+
+    pinMode(WATER_SWITCH_PIN,OUTPUT);
+    digitalWrite(WATER_SWITCH_PIN,LOW);
+
+    System.on(event_cloud_data, system_event_callback);
+    //根据网关参数具体设置
     LoRaWan.setDataRate(DR_3);
-    LoRaWan.setChannelDRRange(2,DR_3,DR_3);
-    LoRaWan.setRX2Params(DR_3,434665000);
-    LoRaWan.setChannelStatus(0,false);
-    LoRaWan.setChannelStatus(1,false);
-    //开始入网
-    uint32_t joinDelay = (uint32_t)random(0,10000);
-    delay(joinDelay);
-    deviceState = DEVICE_STATE_JOIN;
+    LoRaWan.setChannelDRRange(2, DR_3, DR_3);
+    LoRaWan.setChannelStatus(0, false);       //关闭通道0
+    LoRaWan.setChannelStatus(1, false);       //关闭通道1
+
+    IntoRobot.defineDatapointNumber(DPID_NUMBER_TEMPATURE, DP_PERMISSION_UP_ONLY, -100, 100, 2, 0); //温度
+    IntoRobot.defineDatapointNumber(DPID_NUMBER_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 2, 0); //湿度
+    IntoRobot.defineDatapointNumber(DPID_NUMBER_ILLUMINATION, DP_PERMISSION_UP_ONLY, 0, 65535, 2, 0); //光照强度
+    IntoRobot.defineDatapointNumber(DPID_NUMBER_SOIL_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 0, 0); //土壤湿度
+    IntoRobot.defineDatapointBool(DPID_BOOL_WATER_SWITCH, DP_PERMISSION_DOWN_ONLY, false); //浇水开关
+
+    gy30.begin();
+    yl38.begin();
+    delay(100);
+    timerID = timerGetId();
+}
+
+void setup(){
+    userInit();
 }
 
 void loop () {
-	userHandle();
+    userHandle();
 }
