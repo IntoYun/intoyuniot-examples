@@ -23,7 +23,8 @@ GND    GND
 AO     A0
 
 浇水开关
-switch----D2
+switch----D3
+低电平有效
 */
 
 #include <IntoYunIot_SHT2x.h>
@@ -40,14 +41,14 @@ PRODUCT_VERSION(1);                               // 产品版本
 #define DPID_NUMBER_SOIL_HUMIDITY                 4  //数值型            土壤湿度
 #define DPID_BOOL_WATER_SWITCH                    5  //布尔型            浇水开关
 
-#define WATER_SWITCH_PIN    D2
+#define WATER_SWITCH_PIN    D3
 #define SOIL_SENSOR_PIN     A0
 
-double dpDoubleTempature = 0.00;                         // 温度
-double dpDoubleHumidity = 0.00;                          // 湿度
-double dpDoubleIllumination = 0.00;                      // 光照强度
-int dpIntSoil_humidity = 0;                           // 土壤湿度
-bool dpBoolWater_switch;                          // 浇水开关
+double dpDoubleTempature = 0.00;              // 温度
+double dpDoubleHumidity = 0.00;               // 湿度
+double dpDoubleIllumination = 0.00;           // 光照强度
+int dpIntSoil_humidity = 0;                   // 土壤湿度
+bool dpBoolWater_switch;                      // 浇水开关
 
 uint32_t timerID;
 GY30 gy30;
@@ -60,10 +61,10 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
         if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_WATER_SWITCH, dpBoolWater_switch)) {
             //用户代码
             if(true == dpBoolWater_switch){
-                digitalWrite(WATER_SWITCH_PIN, HIGH);
+                digitalWrite(WATER_SWITCH_PIN, LOW);
                 dpBoolWater_switch = true;
             }else{
-                digitalWrite(WATER_SWITCH_PIN, LOW);
+                digitalWrite(WATER_SWITCH_PIN, HIGH);
                 dpBoolWater_switch = false;
             }
         }
@@ -97,7 +98,7 @@ void userHandle (void) {
 void userInit(void) {
 
     pinMode(WATER_SWITCH_PIN,OUTPUT);
-    digitalWrite(WATER_SWITCH_PIN,LOW);
+    digitalWrite(WATER_SWITCH_PIN,HIGH);
 
     System.on(event_cloud_data, system_event_callback);
     //根据网关参数具体设置
