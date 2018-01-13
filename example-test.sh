@@ -129,7 +129,4 @@ intoyuniot run -d ./String/StringToInt/
 intoyuniot run -d ./String/StringToIntRGB/
 fi
 
-
-
-
 exit 0

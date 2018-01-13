@@ -1,36 +1,36 @@
 {
     "name": "garden_LoRaWan",
-    "description": "garden_LoRaWan：监测温湿度，光照强度和土壤湿度，远程控制浇水，采用Class C方式",
+    "description": "可远程监控环境温湿度，光照强度以及土壤湿度和实时控制浇水。",
+    ,
     "homepage": "https://github.com/IntoYun",
     "repository":
     {
-        "type": "git",
-        "url": "https://github.com/IntoYun"
+      "type": "git",
+      "url": "https://github.com/IntoYun"
     },
     "version": "1.0.0",
     "authors": [
-        {
-            "maintainer": true,
-            "name": "robin",
-            "url": "https://github.com/chenkaiyao",
-            "email": "robin@molmc.com"
-        }
+      {
+        "maintainer": true,
+        "name": "robin",
+        "url": "https://github.com/chenkaiyao",
+        "email": "robin@molmc.com"
+      }
     ],
     "dependencies":[
-        {
-            "name": "YL38",
-            "frameworks": "arduino"
-        },
-        {
-            "name": "GY30",
-            "frameworks": "arduino"
-        },
-        {
-            "name": "IntoYunIot_SHT2x",
-            "frameworks": "arduino"
-        }
+      {
+        "name": "YL38",
+        "frameworks": "arduino"
+      },
+      {
+        "name": "GY30",
+        "frameworks": "arduino"
+      },
+      {
+        "name": "IntoYunIot_SHT2x",
+        "frameworks": "arduino"
+      }
     ],
     "frameworks": "arduino",
     "platforms": "*"
 }
-

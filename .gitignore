@@ -6,6 +6,7 @@
 
 .intoiotenvs
 .intoiotlibdeps
+size
 
 # gtags相关文件
 GPATH

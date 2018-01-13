@@ -1,32 +1,31 @@
 {
-    "name": "envMonitor_LoRaWan",
-    "description": "envMonitor_LoRaWan：监测环境温湿度，光照强度和灰尘浓度，采用ClassA方式",
+    "name": "env_monitor_lorawan",
+    "description": "监测环境温湿度，光照强度和灰尘浓度",
     "homepage": "https://github.com/IntoYun",
     "repository":
     {
-        "type": "git",
-        "url": "https://github.com/IntoYun"
+      "type": "git",
+      "url": "https://github.com/IntoYun"
     },
     "version": "1.0.0",
     "authors": [
-        {
-            "maintainer": true,
-            "name": "robin",
-            "url": "https://github.com/chenkaiyao",
-            "email": "robin@molmc.com"
-        }
+      {
+        "maintainer": true,
+        "name": "robin",
+        "url": "https://github.com/chenkaiyao",
+        "email": "robin@molmc.com"
+      }
     ],
     "dependencies":[
-        {
-            "name": "IntoRobot_DHT",
-            "frameworks": "arduino"
-        },
-        {
-            "name": "GY30",
-            "frameworks": "arduino"
-        }
+      {
+        "name": "IntoRobot_DHT",
+        "frameworks": "arduino"
+      },
+      {
+        "name": "GY30",
+        "frameworks": "arduino"
+      }
     ],
     "frameworks": "arduino",
     "platforms": "*"
 }
-
