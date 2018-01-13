@@ -1,23 +1,23 @@
 /*
-************************************************************************
-* 作者:  IntoRobot Team 
-* 版本:  V1.0.0
-* 日期:  03-30-15
-************************************************************************
-功能描述：
-紫外线强度计：检测紫外线强度
+ ************************************************************************
+ * 作者:  IntoRobot Team
+ * 版本:  V1.0.0
+ * 日期:  03-30-15
+ ************************************************************************
+ 功能描述：
+ 紫外线强度计：检测紫外线强度
 
-所需器件:
-1.紫外线检测传感器
+ 所需器件:
+ 1.紫外线检测传感器
 
-接线说明:
-紫外线检测传感器              核心板
-1.VIN                         +3.3V
-2.GND                         GND
-3.OUT                         A0
+ 接线说明:
+ 紫外线检测传感器              核心板
+ 1.VIN                         +3.3V
+ 2.GND                         GND
+ 3.OUT                         A0
 
-说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
-*/
+ 说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
+ */
 
 //紫外线检测应用topic定义
 #define ULTRAVIOLET_DATA_UVINTENSITY    "channel/ultraviolet_0/data/uvIntensity"
@@ -63,16 +63,16 @@ uint8_t uvIndex(uint16_t value)
     }
     return 0;
 }
- 
-void setup() 
+
+void setup()
 {
-// put your setup code here, to run once.
+    // put your setup code here, to run once.
     pinMode(SENSOR_PIN,AN_INPUT);
 }
 
-void loop() 
+void loop()
 {
-// put your main code here, to run repeatedly.
+    // put your main code here, to run repeatedly.
     uint16_t uvLevel = AverageAnalogRead(SENSOR_PIN);
     float outputVoltage = 3.3 * uvLevel/4095;
     float uvIntensity = mapfloat(outputVoltage, 0.99, 2.9, 0.0, 15.0);
@@ -81,3 +81,4 @@ void loop()
     IntoRobot.publish(ULTRAVIOLET_DATA_UVINDEX,uvIndex(analogRead(SENSOR_PIN)));
     delay(3000);
 }
+

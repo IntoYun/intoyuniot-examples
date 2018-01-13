@@ -1,17 +1,15 @@
-/**
-  ******************************************************************************
 /*
-************************************************************************
-* 作者:  IntoRobot Team    
-* 版本:  V1.0.0
-* 日期:  07-04-16
-************************************************************************
-功能描述：
-Neutron自带传感器原始数据显示
+ ************************************************************************
+ * 作者:  IntoRobot Team
+ * 版本:  V1.0.0
+ * 日期:  07-04-16
+ ************************************************************************
+ 功能描述：
+ Neutron自带传感器原始数据显示
 
-  ******************************************************************************
-  */
-  
+ ******************************************************************************
+ */
+
 #define LED_PIN    D7
 
 #define NEUTRON_DATA_ACCELERARTION     "channel/neutron_0/data/acceleration"
@@ -52,7 +50,7 @@ void loop()
 {
     //加速度、陀螺仪、磁力计
     Neutron.getAccelGyroMagData(accelData, gyroData, magData);
-    
+
     Serial.printf("\naccel: %d %d %d\r\n", accelData[0], accelData[1], accelData[2]);
     Serial.printf("gyro:   %d %d %d\r\n", gyroData[0],  gyroData[1],  gyroData[2]);
     Serial.printf("mag:    %d %d %d\r\n", magData[0],   magData[1],   magData[2]);
@@ -65,7 +63,7 @@ void loop()
     {
         //return;
         Serial.printf(" root NULL! \n");
-    
+
     }
     char *jsonString = NULL;
 
@@ -105,7 +103,7 @@ void loop()
     Neutron.getLightData(lightData);
     Serial.printf("\nlight: %d\r\n", lightData);
     IntoRobot.publish(NEUTRON_DATA_ILLUMINATION,lightData);
-    delay(1000);   
+    delay(1000);
     //声音
     Neutron.getMICData(micData);
     Serial.printf("\nmic: %d\r\n", micData);

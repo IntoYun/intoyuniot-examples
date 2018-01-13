@@ -5,7 +5,7 @@
  * 日期:  05-11-16
  ************************************************************************
  功能描述：
-检测鱼缸水温，控制其恒温、增氧、水泵、喂食、灯光。
+ 检测鱼缸水温，控制其恒温、增氧、水泵、喂食、灯光。
 
  所需器件:
  抽水泵
@@ -19,17 +19,17 @@
  2.GND                       GND
  3.DATA                      D0
 
- RGB灯条模块(所需电流较大，外置电源供电)                 
+ RGB灯条模块(所需电流较大，外置电源供电)
  1.VCC                       接外置电源5V
  2.GND                       GND
  3.DATA                      D1
 
-恒温器                       D2                           
-抽水泵                       D3
-喂食器                       D4
-增氧器                       D5
-说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
-*/
+ 恒温器                       D2
+ 抽水泵                       D3
+ 喂食器                       D4
+ 增氧器                       D5
+ 说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
+ */
 /*该头文件引用由IntoRobot自动添加.*/
 #include <Dallas_Temperature.h>
 #include <OneWire.h>
@@ -96,7 +96,7 @@ void neopixelControl(uint8_t brightness, uint32_t rgb)
 
 //增氧控制
 void IncOxyControl(uint8_t oxySwitch)
-{    
+{
     digitalWrite(O2_PIN,oxySwitch);
     IntoRobot.publish(FISHTANK_DATA_OXYSTATUS,oxySwitch);
 
@@ -111,8 +111,8 @@ void IncOxyControl(uint8_t oxySwitch)
         {
             incOxyFlag = 0;
         }
-    } 
-    else 
+    }
+    else
     {
         incOxyFlag = 0;
     }
@@ -164,7 +164,7 @@ void FishTankCb(uint8_t *payload, uint32_t len)
     else
     {
         aJsonObject *feed = aJson.getObjectItem(root, "feed");
-        
+
         if(feed != NULL)
         {
             uint8_t feedSwitchKey = atoi(feed->valuestring);
@@ -186,7 +186,7 @@ void FishTankCb(uint8_t *payload, uint32_t len)
                 return;
             }
             uint8_t oxySwitchKey = oxystatus->valueint;
-            
+
             aJsonObject *oxyTime = aJson.getObjectItem(oxy,"time");
             if(oxyTime == NULL)
             {
@@ -197,10 +197,10 @@ void FishTankCb(uint8_t *payload, uint32_t len)
             IncOxyControl(oxySwitchKey);
         }
     }
-    aJson.deleteItem(root);    
+    aJson.deleteItem(root);
 }
 
-void setup() 
+void setup()
 {
     oneWire.begin();
     ds18b20.begin();
@@ -211,7 +211,7 @@ void setup()
     IntoRobot.subscribe(FISHTANK_CMD_CONTROL, NULL, FishTankCb);
 }
 
-void loop() 
+void loop()
 {
     ds18b20.requestTemperatures();
     float waterTemp = ds18b20.getTempCByIndex(0);
@@ -219,7 +219,7 @@ void loop()
     {
         IntoRobot.publish(FISHTANK_DATA_TEMPERATURE,waterTemp); //上送温度
     }
-    
+
     if(incOxyFlag && (timerIsEnd(oxyStartTime,incOxyTime*60000)))//增氧定时
     {
         digitalWrite(O2_PIN,0);
@@ -229,3 +229,4 @@ void loop()
 
     delay(3000);
 }
+

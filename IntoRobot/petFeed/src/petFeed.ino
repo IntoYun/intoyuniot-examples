@@ -48,10 +48,10 @@ void FeedControl(uint8_t feedVal)
 {
     if(feedVal)
     {
-        digitalWrite(SPEAKER,0);        
+        digitalWrite(SPEAKER,0);
         delay(100);
         digitalWrite(SPEAKER,1);
-        
+
         digitalWrite(MOTORPIN,1);
         IntoRobot.publish(PETFEED_DATA_FEEDSTATUS,1);
         delay(5000);
@@ -75,7 +75,7 @@ void PetFeedCb(uint8_t *payload, uint32_t len)
         aJson.deleteItem(root);
         return;
     }
-        
+
     aJsonObject *_feed = aJson.getObjectItem(root, "feed");
     if(_feed != NULL)
     {
@@ -88,14 +88,14 @@ void PetFeedCb(uint8_t *payload, uint32_t len)
         if(_photo == NULL)
         {
             aJson.deleteItem(root);
-            return;  
+            return;
         }
         uint8_t photoSwitchKey = atoi(_photo->valuestring);
-        if(photoSwitchKey) 
+        if(photoSwitchKey)
         {
         }
     }
-  
+
     aJson.deleteItem(root);
 }
 
@@ -125,6 +125,7 @@ void loop()
         // 发送宠物未出现状态
         IntoRobot.publish(PETFEED_DATA_PATSTATUS,0);
     }
-   
+
     delay(2000);
 }
+

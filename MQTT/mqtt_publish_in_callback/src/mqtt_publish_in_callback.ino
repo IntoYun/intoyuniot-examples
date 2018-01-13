@@ -14,8 +14,6 @@
 
  */
 
-#include <PubSubClient.h>
-
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
 // Update these with values suitable for your network.
@@ -26,7 +24,7 @@ IPAddress server(172, 16, 0, 2);
 void callback(char* topic, byte* payload, unsigned int length);
 
 TCPClient ethClient;
-PubSubClient client(server, 1883, callback, ethClient);
+MqttClientClass client(server, 1883, callback, ethClient);
 
 // Callback function
 void callback(char* topic, byte* payload, unsigned int length) {

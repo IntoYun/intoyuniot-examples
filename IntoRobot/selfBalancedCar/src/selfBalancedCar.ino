@@ -13,26 +13,26 @@
 /*该头文件引用由IntoRobot自动添加.*/
 #include <IntoBike_IntoRobotCloud_Interface.h>
 /*
-************************************************************************
-* 作者:  IntoRobot Team 
-* 版本:  V1.0.0
-* 日期:  Dec. 21 2016
-************************************************************************
-描述：
-IntoBike是由IntoRobot团队推出的双轮自平衡小车，具有一定的难度，是广大青少年学习机器人的利器。
-IntoBike能够与IntoRobotCloud相连，实现任意距离的远程控制。
-其工作原理是，利用IntoRobot－Neutron上的加速度计和陀螺仪获得小车的倾角和速度值，
-经由IntoRobot团队开发的自动控制算法（开源），计算得到连接两轮的两个步进电机的运转速度，
-最后经由IntoRobot－Neutron的PWM输出口，输出与速度值成正比的PWM波，控制步进电机运转，
-实现两轮小车的自平衡运动控制。
-IntoRobot-Bcar的程序主要包括：
-1. 电池电压检测
-2. OLED屏幕的显示
-3. 步进电机的控制
-4. 传感器的获取与滤波
-5. 自平衡算法
-6. 避碰算法
-*/
+ ************************************************************************
+ * 作者:  IntoRobot Team
+ * 版本:  V1.0.0
+ * 日期:  Dec. 21 2016
+ ************************************************************************
+ 描述：
+ IntoBike是由IntoRobot团队推出的双轮自平衡小车，具有一定的难度，是广大青少年学习机器人的利器。
+ IntoBike能够与IntoRobotCloud相连，实现任意距离的远程控制。
+ 其工作原理是，利用IntoRobot－Neutron上的加速度计和陀螺仪获得小车的倾角和速度值，
+ 经由IntoRobot团队开发的自动控制算法（开源），计算得到连接两轮的两个步进电机的运转速度，
+ 最后经由IntoRobot－Neutron的PWM输出口，输出与速度值成正比的PWM波，控制步进电机运转，
+ 实现两轮小车的自平衡运动控制。
+ IntoRobot-Bcar的程序主要包括：
+ 1. 电池电压检测
+ 2. OLED屏幕的显示
+ 3. 步进电机的控制
+ 4. 传感器的获取与滤波
+ 5. 自平衡算法
+ 6. 避碰算法
+ */
 #define TIMER_PERIOD   0.002
 #define BALANCE_CONTROL_PERIOD (TIMER_PERIOD * 5.0)
 #define SENSOR_PERIOD          (TIMER_PERIOD * 5.0)
@@ -43,7 +43,7 @@ IntoRobot-Bcar的程序主要包括：
 #define STEP_L D0    //Left  motor: PWM pulse, One pulse means one step for the Step Motor
 #define FR_R   D7    //Right motor: Direction
 #define STEP_R D3    //Right motor: PWM pulse, One pulse means one step for the Step Motor
-#define STOP   A4    //Enable motor, Active HIGH 
+#define STOP   A4    //Enable motor, Active HIGH
 IntoBikeOledDisplay       _oled_display;
 SonarSensorProcessing     _sonar_sensor;
 AccelGyroSensorProcessing _accelgyro_sensor;
@@ -56,7 +56,10 @@ int _esp_time;
 int8_t _balance_control_ct = 0;
 int8_t _sensor_ct = 0;
 WheelsSpeed  _velocity;
+
+void processTimerISR(void);
 Timer _process_timer(2, processTimerISR);
+
 void processTimerISR(void)
 {
     long int start_time;
@@ -148,3 +151,4 @@ void loop()
     }
     delay(20);
 }
+

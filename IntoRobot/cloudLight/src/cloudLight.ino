@@ -16,10 +16,11 @@
  GND(白色)       GND
  DATA(绿色)      D0
 
-说明：雷电云需用到Process类，Neutron不支持Process类，此例程只适应于Atom核心板
-带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
+ 说明：雷电云需用到Process类，Neutron不支持Process类，此例程只适应于Atom核心板
+ 带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
  */
 /*This #include statement was automatically added by the IntoRobot IDE.*/
+
 #include <Adafruit_NeoPixel.h>
 
 #define CLOUDLIGHT_CMD_SWITCH    "channel/cloudLight_0/cmd/switch"
@@ -156,3 +157,4 @@ void setup()
 void loop()
 {
 }
+

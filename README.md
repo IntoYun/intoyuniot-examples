@@ -9,13 +9,8 @@
 ## examples 属性文件
 1. examples.json
 
-## 测试脚本
-1. example-test.sh
-
-## 示例总数
-142
-
 ## 注意
 Projects LoRaWan目录仅在intoyun平台显示
 IntoRobot目录仅在intorobot平台显示
 其余为公共部分
+

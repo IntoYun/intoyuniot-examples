@@ -13,3 +13,6 @@ GPATH
 GRTAGS
 GTAGS
 
+# 测试目录
+tests
+

@@ -8,8 +8,6 @@
 
  */
 
-#include <PubSubClient.h>
-
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
 // Update these with values suitable for your hardware/network.
@@ -21,7 +19,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 TCPClient ethClient;
-PubSubClient client(ethClient);
+MqttClientClass client(ethClient);
 
 long lastReconnectAttempt = 0;
 

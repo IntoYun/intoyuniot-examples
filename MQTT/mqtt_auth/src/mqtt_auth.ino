@@ -7,8 +7,6 @@
    - subscribes to the topic "inTopic"
  */
 
-#include <PubSubClient.h>
-
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
 // Update these with values suitable for your network.
@@ -20,7 +18,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 TCPClient ethClient;
-PubSubClient client(server, 1883, callback, ethClient);
+MqttClientClass client(server, 1883, callback, ethClient);
 
 void setup()
 {
@@ -38,3 +36,4 @@ void loop()
 {
     client.loop();
 }
+
