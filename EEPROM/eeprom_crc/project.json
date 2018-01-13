@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_crc",
+    "description": "将EEPROM内容里的CRC当作数组分析",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_iteration",
+    "description": "明白怎样到达EEPROM存储本地",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

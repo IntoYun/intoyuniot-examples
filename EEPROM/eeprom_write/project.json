@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_write",
+    "description": "保存模拟输入引脚的值到EEPROM",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

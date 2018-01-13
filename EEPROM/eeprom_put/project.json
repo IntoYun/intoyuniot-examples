@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_put",
+    "description": "用变量来把一些数值放到EEPROM里",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

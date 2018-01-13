@@ -1,6 +1,6 @@
 {
-    "name": "DigitalPotentiometer",
-    "description": "I2C数字电位器AD5171",
+    "name": "SFRRanger_reader",
+    "description": "通过I2C读取超声波测距仪接口",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

@@ -1,6 +1,6 @@
 {
-    "name": "BlinkWithoutDelay",
-    "description": "使用millis()使LED闪烁",
+    "name": "Pulse",
+    "description": "测量脉冲宽度",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

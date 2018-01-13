@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "ReuseConnection",
+    "description": "HTTP Reuse连接通讯",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

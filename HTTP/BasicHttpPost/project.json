@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "BasicHttpPost",
+    "description": "基础HTTP POST通讯",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

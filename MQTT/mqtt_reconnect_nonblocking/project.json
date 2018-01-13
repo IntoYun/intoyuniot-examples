@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "mqtt_reconnect_nonblocking",
+    "description": "MQTT非阻断重连",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

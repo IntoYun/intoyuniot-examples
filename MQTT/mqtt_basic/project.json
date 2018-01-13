@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "mqtt_basic",
+    "description": "MQTT 基础操作",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

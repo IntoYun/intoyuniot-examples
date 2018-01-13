@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_update",
+    "description": "保存从A0读取的数值到EEPROM里，仅在不同的时候写入，以延长EEPROM寿命",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

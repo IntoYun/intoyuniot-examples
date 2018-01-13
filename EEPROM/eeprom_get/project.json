@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_get",
+    "description": "从EEPROM获得一个值，并作为float格式串行打印",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

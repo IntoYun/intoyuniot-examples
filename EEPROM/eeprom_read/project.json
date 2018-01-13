@@ -1,6 +1,6 @@
 {
     "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "description": "读取EEPROM，并且发送它的值到电脑",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

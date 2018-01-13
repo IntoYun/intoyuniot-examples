@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "eeprom_clear",
+    "description": "清理EEPROM里面的数据",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

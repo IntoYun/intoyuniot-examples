@@ -1,6 +1,6 @@
 {
     "name": "DigitalPotentiometer",
-    "description": "I2C数字电位器AD5171",
+    "description": "控制一个模拟设备AD5171数字电位器",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

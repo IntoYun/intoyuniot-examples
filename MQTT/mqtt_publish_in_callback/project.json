@@ -1,6 +1,6 @@
 {
-    "name": "eeprom_read",
-    "description": "Flash当做EEPROM使用进行读操作",
+    "name": "mqtt_publish_in_callback",
+    "description": "MQTT接收回调调用publish函数",
     "homepage": "https://github.com/intorobot",
     "repository":
     {

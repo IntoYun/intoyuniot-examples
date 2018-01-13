@@ -1,5 +1,5 @@
 {
-    "name": "env_monitor_lorawan",
+    "name": "envMonitor_LoRaWan",
     "description": "监测环境温湿度，光照强度和灰尘浓度",
     "homepage": "https://github.com/IntoYun",
     "repository":
@@ -29,3 +29,4 @@
     "frameworks": "arduino",
     "platforms": "*"
 }
+

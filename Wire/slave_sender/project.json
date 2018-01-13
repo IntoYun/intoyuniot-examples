@@ -1,6 +1,6 @@
 {
-    "name": "DigitalPotentiometer",
-    "description": "I2C数字电位器AD5171",
+    "name": "slave_sender",
+    "description": "编程两个Arduino板之间通过I2C交流",
     "homepage": "https://github.com/intorobot",
     "repository":
     {
