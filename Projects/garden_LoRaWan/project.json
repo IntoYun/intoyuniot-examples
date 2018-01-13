@@ -1,7 +1,6 @@
 {
     "name": "garden_LoRaWan",
     "description": "可远程监控环境温湿度，光照强度以及土壤湿度和实时控制浇水。",
-    ,
     "homepage": "https://github.com/IntoYun",
     "repository":
     {
@@ -34,3 +33,4 @@
     "frameworks": "arduino",
     "platforms": "*"
 }
+
