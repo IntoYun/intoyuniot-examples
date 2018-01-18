@@ -21,11 +21,13 @@
 
 #include "IntoRobot_DHT.h"
 
-PRODUCT_ID(vJpbyXAxReBJd1a7)                     //产品标识
-PRODUCT_SECRET(8d4eca4109e6d177c358b2d474845778) //产品密钥
-PRODUCT_SOFTWARE_VERSION(1.0.0)                  //产品软件版本号
-PRODUCT_HARDWARE_VERSION(1.0.0)                  //产品硬件版本号
+#define PRODUCT_ID_DEF                   vJpbyXAxReBJd1a7
+#define PRODUCT_SECRET_DEF               8d4eca4109e6d177c358b2d474845778
+#define SOFTWARE_VERSION_DEF             V1.0.0
 
+PRODUCT_ID(PRODUCT_ID_DEF)     //产品ID
+PRODUCT_SECRET(PRODUCT_SECRET_DEF) //产品密钥
+PRODUCT_VERSION(SOFTWARE_VERSION_DEF)     //产品版本号
 
 #define DPID_NUMBER_TEMPERATURE                   1  //数值型            温度
 #define DPID_NUMBER_HUMIDITY                      2  //数值型            湿度

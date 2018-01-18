@@ -15,9 +15,13 @@
 说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
 */
 
-PRODUCT_ID(WP6KsBxqRPM9x1ab)                     //产品ID
-PRODUCT_SECRET(e964ba2d7ebdfbf368ba3168aafd55cb) //产品密钥
-PRODUCT_VERSION(1)                               //产品版本号
+#define PRODUCT_ID_DEF                   WP6KsBxqRPM9x1ab
+#define PRODUCT_SECRET_DEF               e964ba2d7ebdfbf368ba3168aafd55cb
+#define SOFTWARE_VERSION_DEF             V1.0.0
+
+PRODUCT_ID(PRODUCT_ID_DEF)     //产品ID
+PRODUCT_SECRET(PRODUCT_SECRET_DEF) //产品密钥
+PRODUCT_VERSION(SOFTWARE_VERSION_DEF)     //产品版本号
 
 //定义数据点
 #define DPID_BOOL_SWITCH                 1        //灯泡开关

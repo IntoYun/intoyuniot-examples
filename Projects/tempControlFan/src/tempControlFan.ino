@@ -30,9 +30,13 @@ DH11                         核心板
 
 #include <IntoRobot_DHT.h>
 
-PRODUCT_ID(WP6KsBxqRPM9x1ab)                     //产品ID
-PRODUCT_SECRET(e964ba2d7ebdfbf368ba3168aafd55cb) //产品密钥
-PRODUCT_VERSION(1)                               //产品版本号
+#define PRODUCT_ID_DEF                   WP6KsBxqRPM9x1ab
+#define PRODUCT_SECRET_DEF               e964ba2d7ebdfbf368ba3168aafd55cb
+#define SOFTWARE_VERSION_DEF             V1.0.0
+
+PRODUCT_ID(PRODUCT_ID_DEF)     //产品ID
+PRODUCT_SECRET(PRODUCT_SECRET_DEF) //产品密钥
+PRODUCT_VERSION(SOFTWARE_VERSION_DEF)     //产品版本号
 
 //定义数据点
 #define DPID_BOOL_FAN_SWITCH     1 //风扇开关

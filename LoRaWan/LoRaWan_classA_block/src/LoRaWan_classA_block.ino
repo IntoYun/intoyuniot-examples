@@ -1,6 +1,10 @@
-PRODUCT_ID(y4NFFyDE9uq6H202)     //产品ID
-PRODUCT_SECRET(ab697b0dc1716d24cfc49b071668e766) //产品密钥
-PRODUCT_VERSION(2)     //产品版本号
+#define PRODUCT_ID_DEF                   y4NFFyDE9uq6H202
+#define PRODUCT_SECRET_DEF               ab697b0dc1716d24cfc49b071668e766
+#define SOFTWARE_VERSION_DEF             V1.0.0
+
+PRODUCT_ID(PRODUCT_ID_DEF)     //产品ID
+PRODUCT_SECRET(PRODUCT_SECRET_DEF) //产品密钥
+PRODUCT_VERSION(SOFTWARE_VERSION_DEF)     //产品版本号
 
 #define DPID_ENUM_LIGHT_MODE             1        //颜色模式
 #define DPID_NUMBER_TEMPERATURE          2        //温度
