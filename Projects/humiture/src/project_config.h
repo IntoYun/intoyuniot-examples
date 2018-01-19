@@ -23,12 +23,12 @@
 //产品ID
 //产品ID是一个16个字节的字符串，为一个产品的标识符。设备通过上送产品ID可以把设备归属到该类产品中。
 //产品ID属于绝密信息，请防止泄露。
-#define PRODUCT_ID_DEF                            eykXmRE76yutf1b9
+#define PRODUCT_ID_DEF                            vJpbyXAxReBJd1a7
 
 //产品密钥
 //产品密钥是一个32个字节的字符串，通过产品密钥可以完成设备的自动注册。产品密钥在任何时候不传输。
 //产品密钥属于绝密信息，请防止泄露。
-#define PRODUCT_SECRET_DEF                        e88d8e51e3f4f1b09ce7ea1ec8fc9c5b
+#define PRODUCT_SECRET_DEF                        8d4eca4109e6d177c358b2d474845778
 
 //硬件版本号
 //硬件版本号，为设备的硬件版本号。该版本号将上送至服务器。
@@ -36,11 +36,6 @@
 
 //软件版本号
 //软件版本号，为设备当前软件的版本号。该版本号将上送至服务器。
-#define SOFTWARE_VERSION_DEF                      envMonitor_LoRaWan
-
-//是否带确认发送
-//true:  带确认发送，数据一定到达平台。该种方式发送不成功，将重发。
-//false: 不带确认发送，数据不一定到达平台。默认采取该种方式。
-#define IS_SEND_CONFIRMED_DEF                     false
+#define SOFTWARE_VERSION_DEF                      v1.0.0
 
 #endif

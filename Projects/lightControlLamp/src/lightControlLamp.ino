@@ -31,15 +31,14 @@ GY-30                       核心板
 请注意核心板的I2C引脚区别，避免接线错误。
 */
 
+#include "project_config.h"
+
 #include <gy30.h>
 
-#define PRODUCT_ID_DEF                   WP6KsBxqRPM9x1ab
-#define PRODUCT_SECRET_DEF               e964ba2d7ebdfbf368ba3168aafd55cb
-#define SOFTWARE_VERSION_DEF             V1.0.0
-
-PRODUCT_ID(PRODUCT_ID_DEF)     //产品ID
-PRODUCT_SECRET(PRODUCT_SECRET_DEF) //产品密钥
-PRODUCT_VERSION(SOFTWARE_VERSION_DEF)     //产品版本号
+PRODUCT_ID(PRODUCT_ID_DEF)                        // 产品标识
+PRODUCT_SECRET(PRODUCT_SECRET_DEF)                // 产品密钥
+PRODUCT_SOFTWARE_VERSION(SOFTWARE_VERSION_DEF)    // 产品软件版本号
+PRODUCT_HARDWARE_VERSION(HARDWARE_VERSION_DEF)    // 产品硬件版本号
 
 //定义数据点
 #define DPID_BOOL_LAMP_SWITCH     1     //灯泡开关

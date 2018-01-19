@@ -19,15 +19,14 @@
  说明：带有“D”的为数字管脚，带有“A”的为模拟管脚，接线时请确认核心板引脚，避免接线错误。
 */
 
+#include "project_config.h"
+
 #include "IntoRobot_DHT.h"
 
-#define PRODUCT_ID_DEF                   vJpbyXAxReBJd1a7
-#define PRODUCT_SECRET_DEF               8d4eca4109e6d177c358b2d474845778
-#define SOFTWARE_VERSION_DEF             V1.0.0
-
-PRODUCT_ID(PRODUCT_ID_DEF)     //产品ID
-PRODUCT_SECRET(PRODUCT_SECRET_DEF) //产品密钥
-PRODUCT_VERSION(SOFTWARE_VERSION_DEF)     //产品版本号
+PRODUCT_ID(PRODUCT_ID_DEF)                        // 产品标识
+PRODUCT_SECRET(PRODUCT_SECRET_DEF)                // 产品密钥
+PRODUCT_SOFTWARE_VERSION(SOFTWARE_VERSION_DEF)    // 产品软件版本号
+PRODUCT_HARDWARE_VERSION(HARDWARE_VERSION_DEF)    // 产品硬件版本号
 
 #define DPID_NUMBER_TEMPERATURE                   1  //数值型            温度
 #define DPID_NUMBER_HUMIDITY                      2  //数值型            湿度
