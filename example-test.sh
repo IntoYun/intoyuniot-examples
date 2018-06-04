@@ -179,6 +179,12 @@ intoyuniot run -d ./Syntax/WhileStatementConditional/ 2>&1 1>/dev/null
 intoyuniot run -d ./TCP/TcpClient/ 2>&1 1>/dev/null
 intoyuniot run -d ./TCP/TcpServer/ 2>&1 1>/dev/null
 
+# test Time
+intoyuniot run -d ./Time/SimpleTime/ 2>&1 1>/dev/null
+
+# test Timer
+intoyuniot run -d ./Timer/RepeatSoftTimer/ 2>&1 1>/dev/null
+
 # test WiFi
 intoyuniot run -d ./WiFi/ConnectNoEncryption/ 2>&1 1>/dev/null
 intoyuniot run -d ./WiFi/ConnectWithWEP/ 2>&1 1>/dev/null
