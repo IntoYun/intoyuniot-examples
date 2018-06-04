@@ -6,7 +6,8 @@ set -v
 # test Analog
 intoyuniot run -d ./Analog/AnalogInOutSerial/ 2>&1 1>/dev/null
 intoyuniot run -d ./Analog/AnalogInput/ 2>&1 1>/dev/null
-intoyuniot run -d ./Analog/AnalogWrite/ 2>&1 1>/dev/null
+intoyuniot run -d ./Analog/AnalogWriteDAC/ 2>&1 1>/dev/null
+intoyuniot run -d ./Analog/AnalogWritePWM/ 2>&1 1>/dev/null
 intoyuniot run -d ./Analog/Calibration/ 2>&1 1>/dev/null
 intoyuniot run -d ./Analog/Fading/ 2>&1 1>/dev/null
 intoyuniot run -d ./Analog/Smoothing/ 2>&1 1>/dev/null
