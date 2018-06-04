@@ -18,6 +18,7 @@
 // These constants won't change.  They're used to give names
 // to the pins used:
 //不同板子请修改其引脚
+
 const int lowestPin = D0;
 const int highestPin = D1;
 
@@ -52,3 +53,4 @@ void loop()
         delay(100);
     }
 }
+

@@ -1,6 +1,6 @@
 {
-    "name": "AnalogWrite",
-    "description": "在A0-A3的管脚上输出PWM",
+    "name": "AnalogWriteDAC",
+    "description": "在A4-A5的管脚上输出模拟电压",
     "homepage": "https://github.com/intorobot",
     "repository":
     {
