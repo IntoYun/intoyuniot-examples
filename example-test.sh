@@ -3,6 +3,11 @@
 
 set -v
 
+# test aJson
+intoyuniot run -d ./aJson/Json_Example/ 2>&1 1>/dev/null
+intoyuniot run -d ./aJson/Json_Serial/ 2>&1 1>/dev/null
+intoyuniot run -d ./aJson/MultiLevelParsing/ 2>&1 1>/dev/null
+
 # test Analog
 intoyuniot run -d ./Analog/AnalogInOutSerial/ 2>&1 1>/dev/null
 intoyuniot run -d ./Analog/AnalogInput/ 2>&1 1>/dev/null
@@ -130,6 +135,9 @@ intoyuniot run -d ./Projects/lightControlLamp/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/smartLight/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/tempControlFan/ 2>&1 1>/dev/null
 
+# test RGB
+intoyuniot run -d ./RGB/RgbControl/ 2>&1 1>/dev/null
+
 # test Serial
 intoyuniot run -d ./Serial/ASCIITable/ 2>&1 1>/dev/null
 intoyuniot run -d ./Serial/Dimmer/ 2>&1 1>/dev/null
@@ -174,6 +182,9 @@ intoyuniot run -d ./Syntax/IfStatementConditional/ 2>&1 1>/dev/null
 intoyuniot run -d ./Syntax/switchCase/ 2>&1 1>/dev/null
 intoyuniot run -d ./Syntax/switchCase2/ 2>&1 1>/dev/null
 intoyuniot run -d ./Syntax/WhileStatementConditional/ 2>&1 1>/dev/null
+
+# test System
+intoyuniot run -d ./System/GetFreeMemory/ 2>&1 1>/dev/null
 
 # test TCP
 intoyuniot run -d ./TCP/TcpClient/ 2>&1 1>/dev/null
