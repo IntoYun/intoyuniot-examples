@@ -1,6 +1,6 @@
 {
-    "name": "GetCellularRssi",
-    "description": "获取移动网络信号强度",
+    "name": "RgbControl",
+    "description": "RGB灯控制示例",
     "homepage": "https://github.com/intorobot",
     "repository":
     {
