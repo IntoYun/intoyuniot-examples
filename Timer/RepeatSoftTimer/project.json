@@ -1,0 +1,21 @@
+{
+    "name": "RepeatSoftTimer",
+    "description": "循环定时器",
+    "homepage": "https://github.com/intoyuniot",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/intoyuniot"
+    },
+    "version": "1.0.0",
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "robin",
+            "url": "https://github.com/chenkaiyao",
+            "email": "robin@molmc.com"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
