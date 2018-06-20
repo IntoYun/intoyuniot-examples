@@ -1,6 +1,8 @@
 {
+    "aJson"    : "Json操作",
     "Analog"   : "模拟IO操作",
     "Basics"   : "基础操作",
+    "Cellular" : "移动网络操作",
     "Digital"  : "数字IO操作",
     "EEPROM"   : "EEPROM读写",
     "HTTP"     : "HTTP通讯",
@@ -9,12 +11,16 @@
     "LoRaWan"  : "LoRaWan编程",
     "MQTT"     : "MQTT通讯",
     "Projects" : "项目实例",
+    "RGB"      : "三色灯控制",
     "Serial"   : "串口通讯",
     "Servo"    : "舵机控制",
     "SPI"      : "SPI接口",
     "String"   : "字符串操作",
     "Syntax"   : "语法控制",
+    "System"   : "系统控制",
     "TCP"      : "TCP通讯",
+    "Time"     : "实时时间实例",
+    "Timer"    : "定时器实例",
     "WiFi"     : "WiFi操作",
     "Wire"     : "I2C读写"
 }
