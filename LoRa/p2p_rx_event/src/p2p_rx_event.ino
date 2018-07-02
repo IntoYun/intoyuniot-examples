@@ -9,13 +9,19 @@ static bool ledFlag = false;
 uint8_t buffer[BUFFER_SIZE] = {1,2,3,4,5,6,7,8,9,0};
 int16_t rssiVal = 0;
 
+void init_before_setup(void)
+{
+    System.disableFeature(SYSTEM_FEATURE_LORAMAC_RUN_ENABLED); //不运行lorawan协议
+    System.disableFeature(SYSTEM_FEATURE_CONFIG_SAVE_ENABLED); //设备模式不保存
+}
+
+STARTUP( init_before_setup() );
+
 void LoRaRadioEventCallback(system_event_t event, int param, uint8_t *data, uint16_t datalen)
 {
-    switch(event)
-    {
+    switch(event) {
         case event_lora_radio_status:
-            switch(param)
-            {
+            switch(param) {
                 case ep_lora_radio_tx_done:
                     LoRa.radioSetSleep();
                     Serial.println("tx done");
@@ -30,8 +36,7 @@ void LoRaRadioEventCallback(system_event_t event, int param, uint8_t *data, uint
                     //获取接收的数据
                     memcpy( buffer, data, datalen );
                     Serial.printf("datalen = %d\r\n",datalen);
-                    for(uint8_t i=0; i<BUFFER_SIZE;i++)
-                    {
+                    for(uint8_t i=0; i<BUFFER_SIZE;i++) {
                         Serial.printf("0x%x ",buffer[i]);
                     }
                     Serial.printf("\r\n");
@@ -76,3 +81,4 @@ void loop()
 {
 
 }
+

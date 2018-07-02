@@ -2,21 +2,27 @@
 功能描述：事件方式发送数据
 SX1278_TX：SX1278发送数据
 */
-#define LED    LED_BUILTIN
-#define BUFFER_SIZE 10
+#define LED          LED_BUILTIN
+#define BUFFER_SIZE  10
 
 static bool ledFlag = false;
 static bool txDone = true;
 uint8_t buffer[BUFFER_SIZE] = {1,2,3,4,5,6,7,8,9,0};//应用数据定义
 
+void init_before_setup(void)
+{
+    System.disableFeature(SYSTEM_FEATURE_LORAMAC_RUN_ENABLED); //不运行lorawan协议
+    System.disableFeature(SYSTEM_FEATURE_CONFIG_SAVE_ENABLED); //设备模式不保存
+}
+
+STARTUP( init_before_setup() );
+
 //用户处理接收发送完数据等处理
 void LoRaRadioEventCallback(system_event_t event, int param, uint8_t *data, uint16_t datalen)
 {
-    switch(event)
-    {
+    switch(event) {
         case event_lora_radio_status:
-            switch(param)
-            {
+            switch(param) {
                 case ep_lora_radio_tx_done:
                     LoRa.radioSetSleep();
                     ledFlag = !ledFlag;
@@ -60,16 +66,16 @@ void setup()
 
 void loop()
 {
-    if(txDone)
-    {
+    if(txDone) {
        //发送数据
         txDone = false;
-        if(buffer[0] != 255){
+        if(buffer[0] != 255) {
             buffer[0]++;
-        }else{
+        } else {
             buffer[0] = 0;
         }
         LoRa.radioSend(buffer,BUFFER_SIZE,0);
     }
     delay(1000);
 }
+
