@@ -3,7 +3,6 @@
 */
 
 void setup() {
-    //用户接管三色灯控制权
     Serial.begin(115200);
 }
 

@@ -185,6 +185,7 @@ intoyuniot run -d ./Syntax/WhileStatementConditional/ 2>&1 1>/dev/null
 
 # test System
 intoyuniot run -d ./System/GetFreeMemory/ 2>&1 1>/dev/null
+intoyuniot run -d ./System/SystemSleep/ 2>&1 1>/dev/null
 
 # test TCP
 intoyuniot run -d ./TCP/TcpClient/ 2>&1 1>/dev/null

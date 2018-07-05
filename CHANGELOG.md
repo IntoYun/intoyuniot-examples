@@ -1,5 +1,9 @@
 ## v1.2.2
 
+- 添加休眠示例
+
+## v1.2.2
+
 - 添加System、Cellular、RGB、aJson示例
 - 添加DAC示例
 - 添加timer和time定时器
