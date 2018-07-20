@@ -56,22 +56,25 @@ bool lampSwitch;
 void system_event_callback(system_event_t event, int param, uint8_t *data, uint16_t datalen)
 {
     // 平台下发数据点事件
-    if((event == event_cloud_data) && (param == ep_cloud_data_datapoint))
-    {
-        if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_LAMP_SWITCH, lampSwitch))//获取灯泡开关数据
-        {
-            if(true == lampSwitch)
-            {
-                digitalWrite(LAMP_SWITCH_PIN,LOW);//打开灯泡 请根据实际情况设置高低电平
-                IntoRobot.writeDatapoint(DPID_BOOL_LAMP_STATUS, true);//写入灯泡状态开
+    switch(event) {
+        case event_cloud_comm:
+            switch(param) {
+                case ep_cloud_comm_data:
+                    if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_BOOL_LAMP_SWITCH, lampSwitch)) {
+                        if(true == lampSwitch) {
+                            digitalWrite(LAMP_SWITCH_PIN,LOW);//打开灯泡 请根据实际情况设置高低电平
+                            Cloud.writeDatapoint(DPID_BOOL_LAMP_STATUS, true);//写入灯泡状态开
+                        } else {
+                            digitalWrite(LAMP_SWITCH_PIN,HIGH);//关闭灯泡 请根据实际情况设置高低电平
+                            Cloud.writeDatapoint(DPID_BOOL_LAMP_STATUS, false);//写入灯泡状态关
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                digitalWrite(LAMP_SWITCH_PIN,HIGH);//关闭灯泡 请根据实际情况设置高低电平
-                IntoRobot.writeDatapoint(DPID_BOOL_LAMP_STATUS, false);//写入灯泡状态关
-            }
-        }
-
+        default:
+            break;
     }
 }
 
@@ -82,28 +85,25 @@ void setup()
     digitalWrite(LAMP_SWITCH_PIN, LOW);
     System.on(event_cloud_data, &system_event_callback);
 
-    IntoRobot.defineDatapointBool(DPID_BOOL_LAMP_SWITCH, DP_PERMISSION_UP_DOWN, false); //定义灯泡数据点
-    IntoRobot.defineDatapointBool(DPID_BOOL_LAMP_STATUS, DP_PERMISSION_UP_ONLY, false); //定义灯泡数据点
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_INTENSITY, DP_PERMISSION_UP_ONLY, 0, 10000, 2, 0); //定义光强数据点
+    Cloud.defineDatapointBool(DPID_BOOL_LAMP_SWITCH, DP_PERMISSION_UP_DOWN, false); //定义灯泡数据点
+    Cloud.defineDatapointBool(DPID_BOOL_LAMP_STATUS, DP_PERMISSION_UP_ONLY, false); //定义灯泡数据点
+    Cloud.defineDatapointNumber(DPID_NUMBER_INTENSITY, DP_PERMISSION_UP_ONLY, 0, 10000, 2, 0); //定义光强数据点
 }
 
 void loop()
 {
 	float lightIntensity = gy30.Read();
-    if(lightIntensity < ILLUMINATION_THRESHOLD)
-    {
+    if(lightIntensity < ILLUMINATION_THRESHOLD) {
         digitalWrite(LAMP_SWITCH_PIN, LOW);//打开灯泡 请根据实际情况设置高低电平
-        IntoRobot.writeDatapoint(DPID_BOOL_LAMP_STATUS, true);//写入数据灯泡状态开
-        IntoRobot.writeDatapoint(DPID_BOOL_LAMP_SWITCH, true);//写入数据灯泡开关为开
-    }
-    else
-    {
+        Cloud.writeDatapoint(DPID_BOOL_LAMP_STATUS, true);//写入数据灯泡状态开
+        Cloud.writeDatapoint(DPID_BOOL_LAMP_SWITCH, true);//写入数据灯泡开关为开
+    } else {
         digitalWrite(LAMP_SWITCH_PIN, HIGH);//关闭灯泡 请根据实际情况设置高低电平
-        IntoRobot.writeDatapoint(DPID_BOOL_LAMP_STATUS, false);//写入数据灯泡状态关
-        IntoRobot.writeDatapoint(DPID_BOOL_LAMP_SWITCH, false);//写入数据灯泡开关为关
+        Cloud.writeDatapoint(DPID_BOOL_LAMP_STATUS, false);//写入数据灯泡状态关
+        Cloud.writeDatapoint(DPID_BOOL_LAMP_SWITCH, false);//写入数据灯泡开关为关
     }
 
-    IntoRobot.writeDatapoint(DPID_NUMBER_INTENSITY,lightIntensity);
+    Cloud.writeDatapoint(DPID_NUMBER_INTENSITY,lightIntensity);
     delay(3000);
 }
 

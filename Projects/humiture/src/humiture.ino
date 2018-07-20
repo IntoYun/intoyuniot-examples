@@ -44,8 +44,8 @@ void userHandle (void) {
     dpDoubleTemperature = dht11.getTempCelcius();
     dpIntHumidity = dht11.getHumidity();
     //发送数据点 （数据点具备上送属性）
-    IntoRobot.writeDatapoint(DPID_NUMBER_TEMPERATURE, dpDoubleTemperature);
-    IntoRobot.writeDatapoint(DPID_NUMBER_HUMIDITY, dpIntHumidity);
+    Cloud.writeDatapoint(DPID_NUMBER_TEMPERATURE, dpDoubleTemperature);
+    Cloud.writeDatapoint(DPID_NUMBER_HUMIDITY, dpIntHumidity);
     //处理间隔，用户可以根据自己需求更改
     delay(3000);
 }
@@ -53,8 +53,8 @@ void userHandle (void) {
 void setup()
 {
     dht11.begin();
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, 0, 100, 1, 0); //温度
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 0, 0);    //湿度
+    Cloud.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, 0, 100, 1, 0); //温度
+    Cloud.defineDatapointNumber(DPID_NUMBER_HUMIDITY, DP_PERMISSION_UP_ONLY, 0, 100, 0, 0);    //湿度
 }
 
 void loop()

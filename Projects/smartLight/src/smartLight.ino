@@ -33,23 +33,26 @@ bool LightStatus;
 
 void system_event_callback(system_event_t event, int param, uint8_t *data, uint16_t datalen)
 {
-    // 平台下发数据点事件
-    if((event == event_cloud_data) && (param == ep_cloud_data_datapoint))
-    {
-        //灯泡控制
-        if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_SWITCH, LightSwitch))//获取灯泡开关数据
-        {
-            if(true == LightSwitch)
-            {
-                digitalWrite(LEDPIN,LOW);//打开灯泡 请根据实际情况设置高低电平
-                IntoRobot.writeDatapoint(DPID_BOOL_LIGHT_STATUS, true);//写入数据灯泡状态开
+    switch(event) {
+        case event_cloud_comm:
+            switch(param) {
+                case ep_cloud_comm_data:
+                    //灯泡控制
+                    if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_BOOL_SWITCH, LightSwitch)) {
+                        if(true == LightSwitch) {
+                            digitalWrite(LEDPIN,LOW);//打开灯泡 请根据实际情况设置高低电平
+                            Cloud.writeDatapoint(DPID_BOOL_LIGHT_STATUS, true);//写入数据灯泡状态开
+                        } else {
+                            digitalWrite(LEDPIN,HIGH);//关闭灯泡 请根据实际情况设置高低电平
+                            Cloud.writeDatapoint(DPID_BOOL_LIGHT_STATUS, false);//写入数据灯泡状态关
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                digitalWrite(LEDPIN,HIGH);//关闭灯泡 请根据实际情况设置高低电平
-                IntoRobot.writeDatapoint(DPID_BOOL_LIGHT_STATUS, false);//写入数据灯泡状态关
-            }
-        }
+        default:
+            break;
     }
 }
 
@@ -59,8 +62,8 @@ void setup()
     pinMode(LEDPIN, OUTPUT);
     System.on(event_cloud_data, &system_event_callback);
 
-    IntoRobot.defineDatapointBool(DPID_BOOL_SWITCH, DP_PERMISSION_UP_DOWN, false);        //灯泡开关
-    IntoRobot.defineDatapointBool(DPID_BOOL_LIGHT_STATUS, DP_PERMISSION_UP_ONLY, false);  //灯泡亮灭状态
+    Cloud.defineDatapointBool(DPID_BOOL_SWITCH, DP_PERMISSION_UP_DOWN, false);        //灯泡开关
+    Cloud.defineDatapointBool(DPID_BOOL_LIGHT_STATUS, DP_PERMISSION_UP_ONLY, false);  //灯泡亮灭状态
 }
 
 void loop()

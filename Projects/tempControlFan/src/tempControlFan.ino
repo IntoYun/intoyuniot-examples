@@ -57,21 +57,25 @@ bool fanStatus;
 void system_event_callback(system_event_t event, int param, uint8_t *data, uint16_t datalen)
 {
     // 平台下发数据点事件
-    if((event == event_cloud_data) && (param == ep_cloud_data_datapoint))
-    {
-        if (RESULT_DATAPOINT_NEW == IntoRobot.readDatapoint(DPID_BOOL_FAN_SWITCH, fanSwitch))//获取风扇开关数据
-        {
-            if(true == fanSwitch)
-            {
-                digitalWrite(FAN_SWITCH_PIN,HIGH);//打开风扇 请根据实际情况设置高低电平
-                IntoRobot.writeDatapoint(DPID_BOOL_FAN_STATUS, true);//写入数据风扇状态开
+    switch(event) {
+        case event_cloud_comm:
+            switch(param) {
+                case ep_cloud_comm_data:
+                    if (RESULT_DATAPOINT_NEW == Cloud.readDatapoint(DPID_BOOL_FAN_SWITCH, fanSwitch)) {
+                        if(true == fanSwitch) {
+                            digitalWrite(FAN_SWITCH_PIN,HIGH);//打开风扇 请根据实际情况设置高低电平
+                            Cloud.writeDatapoint(DPID_BOOL_FAN_STATUS, true);//写入数据风扇状态开
+                        } else {
+                            digitalWrite(FAN_SWITCH_PIN,LOW);//关闭风扇 请根据实际情况设置高低电平
+                            Cloud.writeDatapoint(DPID_BOOL_FAN_STATUS, false);//写入数据风扇状态关
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                digitalWrite(FAN_SWITCH_PIN,LOW);//关闭风扇 请根据实际情况设置高低电平
-                IntoRobot.writeDatapoint(DPID_BOOL_FAN_STATUS, false);//写入数据风扇状态关
-            }
-        }
+        default:
+            break;
     }
 }
 
@@ -82,28 +86,24 @@ void setup()
     digitalWrite(FAN_SWITCH_PIN, LOW);
     System.on(event_cloud_data, &system_event_callback);
 
-    IntoRobot.defineDatapointBool(DPID_BOOL_FAN_SWITCH, DP_PERMISSION_UP_DOWN, false); //定义温度数据点
-    IntoRobot.defineDatapointBool(DPID_BOOL_FAN_STATUS, DP_PERMISSION_UP_ONLY, false); //定义温度数据点
-    IntoRobot.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, 0,100,1,0); //定义温度数据点
+    Cloud.defineDatapointBool(DPID_BOOL_FAN_SWITCH, DP_PERMISSION_UP_DOWN, false); //定义温度数据点
+    Cloud.defineDatapointBool(DPID_BOOL_FAN_STATUS, DP_PERMISSION_UP_ONLY, false); //定义温度数据点
+    Cloud.defineDatapointNumber(DPID_NUMBER_TEMPERATURE, DP_PERMISSION_UP_ONLY, 0,100,1,0); //定义温度数据点
 }
 
 void loop()
 {
     temperature = dht11.getTempCelcius();
-    if(temperature > TEMPERATURE_THREHOLD)
-    {
+    if(temperature > TEMPERATURE_THREHOLD) {
         digitalWrite(FAN_SWITCH_PIN, HIGH);//打开风扇 请根据实际情况设置高低电平
-        IntoRobot.writeDatapoint(DPID_BOOL_FAN_STATUS, true);//写入数据风扇状态开
-        IntoRobot.writeDatapoint(DPID_BOOL_FAN_SWITCH, true);//写入数据风扇开关为开
-    }
-    else
-    {
+        Cloud.writeDatapoint(DPID_BOOL_FAN_STATUS, true);//写入数据风扇状态开
+        Cloud.writeDatapoint(DPID_BOOL_FAN_SWITCH, true);//写入数据风扇开关为开
+    } else {
         digitalWrite(FAN_SWITCH_PIN, LOW);//关闭风扇 请根据实际情况设置高低电平
-        IntoRobot.writeDatapoint(DPID_BOOL_FAN_STATUS, false);//写入数据风扇状态关
-        IntoRobot.writeDatapoint(DPID_BOOL_FAN_SWITCH, false);//写入数据风扇开关为关
+        Cloud.writeDatapoint(DPID_BOOL_FAN_STATUS, false);//写入数据风扇状态关
+        Cloud.writeDatapoint(DPID_BOOL_FAN_SWITCH, false);//写入数据风扇开关为关
     }
-
-    IntoRobot.writeDatapoint(DPID_NUMBER_TEMPERATURE,temperature);
+    Cloud.writeDatapoint(DPID_NUMBER_TEMPERATURE,temperature);
     delay(3000);
 }
 
