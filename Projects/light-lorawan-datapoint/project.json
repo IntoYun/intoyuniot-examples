@@ -1,6 +1,6 @@
 {
-    "name": "lightControlLamp",
-    "description": "智能光控灯：具有光照强度检测的智能灯，根据光强度控制灯的开关",
+    "name": "light-lorawan-datapoint",
+    "description": "示例灯控制-LoRaWAN-数据点数据格式",
     "homepage": "https://github.com/intorobot",
     "repository":
     {
@@ -14,12 +14,6 @@
             "name": "robin",
             "url": "https://github.com/chenkaiyao",
             "email": "robin@molmc.com"
-        }
-    ],
-    "dependencies":[
-        {
-            "name": "GY30",
-            "frameworks": "arduino"
         }
     ],
     "frameworks": "arduino",
