@@ -64,7 +64,7 @@ void userInit(void)
     LoRaWan.setChannelStatus(0, false);               //关闭通道0 频率固定：433175000
     LoRaWan.setChannelStatus(1, false);               //关闭通道1 频率固定：433375000
     LoRaWan.setChannelStatus(2, true);                //打开通道2 频率固定：433575000
-    LoRaWan.setChannelFreq(2, 433175000);             //设置通道2频率
+    LoRaWan.setChannelFreq(2, 433575000);             //设置通道2频率
     LoRaWan.setChannelDRRange(2, DR_3, DR_3);         //设置通道2速率范围
     LoRaWan.setChannelStatus(3, false);               //关闭通道3
     LoRaWan.setDutyCyclePrescaler(1);                 //设置占空比
