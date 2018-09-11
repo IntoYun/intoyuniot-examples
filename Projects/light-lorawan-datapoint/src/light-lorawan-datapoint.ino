@@ -18,7 +18,7 @@ PRODUCT_SOFTWARE_VERSION(SOFTWARE_VERSION_DEF)    // 产品软件版本号
 #define APP_RUN_DELAY_RND                         5000 //开机随机启动时间. 单位[ms]. 防止设备同时上电同时入网。
 #define APP_TX_DUTYCYCLE_BASE                     60000 //定义发送周期时间. 单位[ms]。
 #define APP_TX_DUTYCYCLE_RND                      6000 //定义发送时间调整随机范围. 单位[ms]。
-#define APP_TX_DUTYCYCLE                          APP_TX_DUTYCYCLE_BASE + random(-APP_TX_DUTYCYCLE_RND, APP_TX_DUTYCYCLE_RND) //定义发送周期时间. 单位[ms]。
+#define APP_TX_DUTYCYCLE                          (APP_TX_DUTYCYCLE_BASE + random(-APP_TX_DUTYCYCLE_RND, APP_TX_DUTYCYCLE_RND)) //定义发送周期时间. 单位[ms]。
 
 #define LEDPIN                                    LED_BUILTIN      //定义灯泡控制引脚
 
