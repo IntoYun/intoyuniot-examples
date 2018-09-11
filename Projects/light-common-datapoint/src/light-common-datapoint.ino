@@ -56,16 +56,13 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
 
 void userInit(void)
 {
-    //定义数据点事件
+    //定义事件
     System.on(event_all, system_event_callback);
-
     //设置数据上报策略
     Cloud.datapointControl(DP_TRANSMIT_MODE_MANUAL);
-
     //定义产品数据点
     Cloud.defineDatapointBool(DPID_BOOL_STATUS, DP_PERMISSION_UP_ONLY, false); //灯状态
     Cloud.defineDatapointBool(DPID_BOOL_SWITCH, DP_PERMISSION_UP_DOWN, false); //开关
-
     /*************此处修改和添加用户初始化代码**************/
     txNextPacketTimerID = timerGetId();
     pinMode(LEDPIN, OUTPUT);
@@ -97,7 +94,7 @@ void setup()
 
 void loop()
 {
-    //loop 尽量不要阻塞
+    //loop不能阻塞
     userHandle();
 }
 

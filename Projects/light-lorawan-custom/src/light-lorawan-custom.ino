@@ -57,9 +57,10 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
 
 void userInit(void)
 {
-    //定义数据点事件
+    //关闭数据点处理
+    System.disableFeature(SYSTEM_FEATURE_DATA_PROTOCOL_ENABLED);
+    //定义事件
     System.on(event_all, system_event_callback);
-
     //根据网关参数具体设置
     LoRaWan.setChannelStatus(0, false);               //关闭通道0 频率固定：433175000
     LoRaWan.setChannelStatus(1, false);               //关闭通道1 频率固定：433375000
@@ -68,7 +69,6 @@ void userInit(void)
     LoRaWan.setChannelDRRange(2, DR_3, DR_3);         //设置通道2速率范围
     LoRaWan.setChannelStatus(3, false);               //关闭通道3
     LoRaWan.setDutyCyclePrescaler(1);                 //设置占空比
-
     /*************此处修改和添加用户初始化代码**************/
     pinMode(LEDPIN, OUTPUT);
     digitalWrite(LEDPIN, HIGH);    // 默认关闭灯泡
@@ -98,13 +98,6 @@ void userHandle(void)
     /*******************************************************/
 }
 
-void init_before_setup(void)
-{
-    System.disableFeature(SYSTEM_FEATURE_DATA_PROTOCOL_ENABLED);        //关闭数据处理
-}
-
-STARTUP( init_before_setup() );
-
 void setup()
 {
     userInit();
@@ -112,7 +105,7 @@ void setup()
 
 void loop()
 {
-    //loop 尽量不要阻塞
+    //loop不能阻塞
     userHandle();
 }
 

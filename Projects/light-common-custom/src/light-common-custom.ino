@@ -52,9 +52,10 @@ void system_event_callback(system_event_t event, int param, uint8_t *data, uint1
 
 void userInit(void)
 {
-    //定义数据点事件
+    //关闭数据点处理
+    System.disableFeature(SYSTEM_FEATURE_DATA_PROTOCOL_ENABLED);
+    //定义事件
     System.on(event_all, system_event_callback);
-
     /*************此处修改和添加用户初始化代码**************/
     txNextPacketTimerID = timerGetId();
     pinMode(LEDPIN, OUTPUT);
@@ -79,13 +80,6 @@ void userHandle(void)
     /*******************************************************/
 }
 
-void init_before_setup(void)
-{
-    System.disableFeature(SYSTEM_FEATURE_DATA_PROTOCOL_ENABLED);        //关闭数据处理
-}
-
-STARTUP( init_before_setup() );
-
 void setup()
 {
     userInit();
@@ -93,7 +87,7 @@ void setup()
 
 void loop()
 {
-    //loop 尽量不要阻塞
+    //loop不能阻塞
     userHandle();
 }
 
