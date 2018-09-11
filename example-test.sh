@@ -131,6 +131,10 @@ intoyuniot run -d ./MQTT/mqtt_reconnect_nonblocking/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/envMonitor_LoRaWan/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/garden_LoRaWan/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/humiture/ 2>&1 1>/dev/null
+intoyuniot run -d ./Projects/light-common-custom/ 2>&1 1>/dev/null
+intoyuniot run -d ./Projects/light-common-datapoint/ 2>&1 1>/dev/null
+intoyuniot run -d ./Projects/light-lorawan-custom/ 2>&1 1>/dev/null
+intoyuniot run -d ./Projects/light-lorawan-datapoint/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/lightControlLamp/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/smartLight/ 2>&1 1>/dev/null
 intoyuniot run -d ./Projects/tempControlFan/ 2>&1 1>/dev/null
